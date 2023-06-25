@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "696125841949",
+    "project_id": "bookstore-24bbb",
+    "storage_bucket": "bookstore-24bbb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:696125841949:android:5011cfcabd726e60119cf4",
+        "android_client_info": {
+          "package_name": "com.example.book_store7"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "696125841949-8j2717c42v7ufe225a0dchc9e9kqpqao.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBXe4m5k2RYAkAnb8tHKJ2wXSm7OiXwPv8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "696125841949-8j2717c42v7ufe225a0dchc9e9kqpqao.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:696125841949:android:4db99db01eccc570119cf4",
+        "android_client_info": {
+          "package_name": "com.example.care_for_you1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "696125841949-8j2717c42v7ufe225a0dchc9e9kqpqao.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBXe4m5k2RYAkAnb8tHKJ2wXSm7OiXwPv8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "696125841949-8j2717c42v7ufe225a0dchc9e9kqpqao.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

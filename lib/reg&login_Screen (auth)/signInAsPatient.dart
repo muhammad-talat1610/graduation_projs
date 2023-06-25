@@ -1,0 +1,189 @@
+import 'dart:convert';
+import 'package:graduation_project/reg&login_Screen%20(auth)/signUpAsPatient.dart';
+import 'package:graduation_project/reg&login_Screen%20(auth)/userType.dart';
+import 'package:http/http.dart' as http;
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import '../BNBar_Screens/all about BNAVBAR screens.dart';
+import '../services/colors.dart';
+import '../widget/widgets screen (all widgets).dart';
+
+
+class SignInAsPatient extends StatefulWidget {
+  @override
+  State<SignInAsPatient> createState() => _SignInState();
+}
+
+class _SignInState extends State<SignInAsPatient> {
+  ShowPasswordClass controller = Get.put(ShowPasswordClass());
+
+  Widget build(BuildContext context) {
+    final FormKey = GlobalKey<FormState>();
+    final TextEditingController emailController = TextEditingController();
+    final TextEditingController passwordController = TextEditingController();
+    bool _isLoading = false;
+
+    Future<void> _login() async {
+      setState(() {
+        _isLoading = true;
+      });
+
+      final url = Uri.parse('https://care-for-you-v1.000webhostapp.com/api/auth/login');
+      final response = await http.post(
+        url,
+        body: {
+          'email': emailController.text.trim(),
+          'password': passwordController.text.trim(),
+        },
+      );
+
+      final responseData = json.decode(response.body);
+
+      setState(() {
+        _isLoading = false;
+      });
+
+      if (response.statusCode == 200) {  // Login successful
+        // Save user data or token and navigate to the next screen
+        print('Login successful!');
+        var jsonResponse = jsonDecode(response.body);
+        var token = jsonResponse['token'];
+        Get.to(BNAVBAR());
+
+      } else {  // Login failed
+        final error = json.decode(response.body)['error'];
+        final snackBar = SnackBar(
+          content: Text(responseData['message'] ?? 'An error occurred.'),
+          backgroundColor: Colors.red,
+        );
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+      }
+    }
+
+    return Scaffold(    appBar: PreferredSize(child:AppBar
+      ( backgroundColor:mainColor,
+      title: Row(mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Image(image: AssetImage("assets/images/logoWhite.png"), height: 60 ,color: Colors.grey[300]) ,
+          Spacer(),
+          Stack( fit: StackFit.passthrough,
+            children: [
+              CircleAvatar(child:IconButton(onPressed: () {
+                Get.to(userType());
+              }, icon:Icon(Icons.login_sharp) ), backgroundColor: Colors.grey[300],) ,
+
+            ],
+          ),
+        ],) ,
+
+
+    ),
+        preferredSize: Size.fromHeight(70)),
+      body:Container(
+        padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
+        child: Form(
+          key: FormKey,
+          child: ListView(children: [
+              Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                 Center(child: Text("Care For You." , style: TextStyle(fontSize: 40 , fontWeight: FontWeight.bold , color: mainColor),)),
+                    SizedBox(height: 40,),
+                    Center(child: Text("Sign In" ,  style: TextStyle(fontSize: 40 , fontWeight: FontWeight.bold , color: mainColor),)),
+                    SizedBox(height: 20,),
+                    Center(child: Text("Nursing , Care , Help" , style: TextStyle(fontSize: 18 , fontWeight: FontWeight.w400 , color: mainColor),)),
+                SizedBox(height: 30,),
+                Row( mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text("Sign as a" , style: TextStyle(fontSize: 35 , fontWeight: FontWeight.bold , ),),
+                    Text(" Patient" ,  style: TextStyle(fontSize: 35 , fontWeight: FontWeight.bold , color: mainColor),),
+                  ],
+                ),
+                  ],
+                ),
+
+            SizedBox(height: 42.0,),
+            TextFormFieldScreen(controller: emailController, keyboardType: TextInputType.emailAddress, label:"Enter Your Email ",
+              prefix: Icons.email, validator: (value) { return
+                ValidatorScreen(value!, 5, 90, "emailController");
+              },),
+            SizedBox(height: 7.0,),
+            GetBuilder<ShowPasswordClass>(builder: (controller) {
+              return TextFormFieldScreen(
+                  obsureText: controller.isshowPassword,
+                  controller: passwordController,
+                  keyboardType: TextInputType.name,
+                  label: "Enter Your Password",
+                  prefix: Icons.lock,
+                  validator: (value) {
+                    return ValidatorScreen(value!, 6, 90, "password");
+                  },
+                  suffixIcon:controller.isshowPassword?Icons
+                      .visibility_outlined : Icons
+                      .visibility_off_outlined,
+                  onPressed:(){controller.showPassword();});
+            }),
+            Row(mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                TextButton(child: Text(
+                  'Forget Password?' ,
+                  style: TextStyle(fontSize: 15 , color: Colors.cyan),),onPressed: () {
+                  //Get.to(forgetPassword());
+                  },),],),
+            MaterialButtonScreen(titleOfButton: "LOGIN",Icons: Icons.login_outlined , fontSize: 25 , colorOfButton: mainColor,
+              onPressed: () async {
+     if (FormKey.currentState!.validate()) {
+    _login();}},),
+    //await Future.delayed(Duration(seconds: 2));
+     // final _email = emailController.text;
+     //          final _password = passwordController.text;
+     //          final success = await login(_email, _password);
+     //          if (success) {
+     //    Get.to(BNAVBAR());
+     //          }  }
+     //          else {
+     //            ScaffoldMessenger.of(context).showSnackBar(
+     //              SnackBar(content: Text('Invalid username or password')));}
+     //
+     //
+     //        }
+     //        ) ,
+
+
+            SizedBox(height: 10,),
+            Row(mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text("Do you have any accout?"),
+                TextButton(child:Text("Sign Up" , style: TextStyle(color: mainColor , fontWeight: FontWeight.bold ,
+                  fontSize: 20 ,
+                ),textAlign: TextAlign.end, ), onPressed: () {
+                  Get.to(SignUpAsPatient());
+                  },),
+              ],)
+          ]),
+        ),
+      ),
+    );
+  }
+}
+
+
+Future<bool> login(String username, String password) async {
+  final response = await http.post(
+    Uri.parse("https://care-for-you-v1.000webhostapp.com/api/auth/login"),
+    headers: {'Content-Type': 'application/json'},
+    body: jsonEncode({'email': username, 'password': password}),
+  );
+  if (response.statusCode == 200) {
+    // Check if the login was successful
+
+    final data = jsonDecode(response.body);
+    return data['success'] == true;
+  } else {
+    // If the server did not return a success status code, throw an exception
+    throw Exception('Failed to log in');
+  }
+}
