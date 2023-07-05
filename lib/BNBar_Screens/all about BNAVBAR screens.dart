@@ -6,9 +6,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
+import 'package:graduation_project/reg&login_Screen%20(auth)/signUpAsNusre.dart';
 import '../providers_Folder/controller.dart';
-import 'settings.dart';
 import '../reg&login_Screen (auth)/userType.dart';
+import 'settings.dart';
 import 'Services_App_Screen/serviceScreen.dart';
 import 'doctorDetailsOfProfile.dart';
 import 'homeScreen.dart';
@@ -86,13 +87,13 @@ class BNAVBAR extends StatelessWidget {
             items: [
 
               BottomNavigationBarItem(
-                icon: Icon(Icons.home, size: 35 , color: grayColor,), label: 'home'),
+                icon: Icon(Icons.home, size: 35 , color: grayColor,), label: 'home'.tr),
               BottomNavigationBarItem(
-                  icon: Icon(Icons.medical_services, size: 33 ,color: grayColor,), label: 'Services'),
+                  icon: Icon(Icons.medical_services, size: 33 ,color: grayColor,), label: 'Services'.tr),
               BottomNavigationBarItem(
-                 icon: Icon(Icons.flash_on, size: 33, color: grayColor,), label: 'Activity'),
+                 icon: Icon(Icons.flash_on, size: 33, color: grayColor,), label: 'personal Page'.tr),
               BottomNavigationBarItem(
-                  icon: Icon(Icons.arrow_circle_down_rounded, size: 33, color: grayColor,), label: 'About'),
+                  icon: Icon(Icons.arrow_circle_down_rounded, size: 33, color: grayColor,), label: 'About'.tr),
 
             ] ,),
       );

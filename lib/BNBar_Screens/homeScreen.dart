@@ -10,8 +10,8 @@ List<String> names = [    "Eslam Elmahallawy",    "Ahmed Elmahallawy",    "Adam 
 List<String> locations = [    "New York, USA",    "London, UK",    "Paris, France",    "Sydney, Australia"  ];
 List<double> prices = [25.0, 30.0, 20.0, 40.0];
 List<double> ratings = [4.5, 3.5, 5.0, 4.0];
-List<String> images = [    "assets/images/avatar3.png",   "assets/images/avatar4.jpg",   "assets/images/avatar.jpg",
-  "assets/images/avatar2.jpg",];
+List<String> images = [    "assets/images/avatar3.png",   "assets/images/avatar4.jpg",
+  "assets/images/avatar.jpg", "assets/images/avatar2.jpg",];
 
 class homeScreen extends StatefulWidget {
   @override
@@ -31,17 +31,17 @@ class _bNavBarWithDoctorSpetialistState extends State<homeScreen> {
               children: [
                 Image(image: AssetImage("assets/images/logoHome.png") , fit: BoxFit.fill),
                 SizedBox(height: 20,),
-                Center(child: Text("Love Your Soul  " , style: TextStyle(fontSize: 25.0 ,fontFamily: "cairo",
+                Center(child: Text("Love Your Soul".tr , style: TextStyle(fontSize: 25.0 ,fontFamily: "cairo",
                   color: mainColor,
                 ),)  ),
                 SizedBox(height: 2,),
-                Text("we pour love and care in every patient. ", textAlign: TextAlign.center,maxLines: 2  , style: TextStyle(fontSize: 35.0 ,
+                Text("we pour love and care in every patient".tr, textAlign: TextAlign.center,maxLines: 2  , style: TextStyle(fontSize: 35.0 ,
                     fontFamily: "cairo",color:mainColor, fontWeight: FontWeight.bold),),
 
                 Row( crossAxisAlignment: CrossAxisAlignment.end , mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Icon(Icons.arrow_right_alt , size: 30, color: mainColor),
-                    Text("we make you never lose hope. ",
+                    Text("we make you never lose hope".tr,
                       style: TextStyle(fontSize: 20.0 ,
                           fontFamily: "cairo",color:mainColor, fontWeight: FontWeight.bold),),
                   ],
@@ -51,10 +51,12 @@ class _bNavBarWithDoctorSpetialistState extends State<homeScreen> {
               ],
             )),
          SizedBox(height: 30,),
-            Text("Top Ordered ",
+            Text("Top Ordered ".tr,
               style: TextStyle(fontSize: 55.0 ,
                   fontFamily: "cairo",color:Colors.yellow[600], fontWeight: FontWeight.bold),),
 SizedBox(height: 20,),
+
+            //Doctors
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Column(
@@ -201,22 +203,22 @@ Spacer(),
           children: [
           Text("500+ ", style: TextStyle(fontSize: 30.0 ,
               fontFamily: "cairo",color:mainColor, fontWeight: FontWeight.bold),),
-          Text(" patient every day ", style: TextStyle(fontSize: 22.0 ,
+          Text(" patient every day ".tr, style: TextStyle(fontSize: 22.0 ,
               fontFamily: "cairo",color:mainColor, fontWeight: FontWeight.bold),),
             Text("100+ ", style: TextStyle(fontSize: 30.0 ,
               fontFamily: "cairo",color:mainColor, fontWeight: FontWeight.bold),),
-          Text(" Experience Nurses ", style: TextStyle(fontSize: 22.0 ,
+          Text(" Experience Nurses ".tr, style: TextStyle(fontSize: 22.0 ,
               fontFamily: "cairo",color:mainColor, fontWeight: FontWeight.bold),),
         ],),   Spacer(),
         Column(
           children: [
           Text("2000+ ", style: TextStyle(fontSize: 30.0 ,
               fontFamily: "cairo",color:mainColor, fontWeight: FontWeight.bold),),
-          Text(" Patient Capacity ", style: TextStyle(fontSize: 22.0 ,
+          Text(" Patient Capacity ".tr, style: TextStyle(fontSize: 22.0 ,
               fontFamily: "cairo",color:mainColor, fontWeight: FontWeight.bold),),
             Text("500+ ", style: TextStyle(fontSize: 30.0 ,
               fontFamily: "cairo",color:mainColor, fontWeight: FontWeight.bold),),
-          Text(" Years Experience ", style: TextStyle(fontSize: 22.0 ,
+          Text(" Years Experience ".tr, style: TextStyle(fontSize: 22.0 ,
               fontFamily: "cairo",color:mainColor, fontWeight: FontWeight.bold),),
 
         ],),
@@ -228,7 +230,7 @@ Spacer(),
                   children: [
                     Image(image: AssetImage("assets/images/logoWhite.png"), height: 60 ,color: Colors.grey[300]) ,
                    SizedBox(height: 5,),
-                    Text("Our job is to make you comfortable and save your life",style: TextStyle(fontSize: 15.0 ,
+                    Text("Our job is to make you comfortable and save your life".tr,style: TextStyle(fontSize: 15.0 ,
                         fontFamily: "cairo",color: Colors.grey[300], fontWeight: FontWeight.bold),),
                   SizedBox(height: 20,),
                     Row( mainAxisAlignment: MainAxisAlignment.center,

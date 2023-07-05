@@ -2,12 +2,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
+import '../BNBar_Screens/Services_App_Screen/priceOfServent.dart';
 import '../Doctor details.dart';
 import '../providers_Folder/controller.dart';
 import '../services/colors.dart';
 
+late dynamic index; // Declare index variable of type int
+
 class Location extends StatelessWidget {
- // getxController controller = Get.put(getxController());
+  final getxController controller = Get.put(getxController());
 
   Widget build(BuildContext context) {
     return GetBuilder<getxController>(builder: (controller) {
@@ -15,26 +18,25 @@ class Location extends StatelessWidget {
             body: Column(
               children: [
                 SizedBox(
-                  height: 50,
+                  height: 30,
                 ),
                 Expanded(
                   child: Container(
                     height: 140,
-                    child: Column(
+                    child: Column( mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-
                         Row(
                           children: [
                             SizedBox(
                               width: 10,
                             ),
-                            myInkwell("All", () {
+                            myInkwell("All".tr, () {
                               controller.getAll();
                             }),
-                            myInkwell("Male", () {
+                            myInkwell("Male".tr, () {
                               controller.getMale();
                             }),
-                            myInkwell("Female", () {
+                            myInkwell("Female".tr, () {
                               controller.getFemale();
                             }),
                           ],
@@ -44,21 +46,22 @@ class Location extends StatelessWidget {
                             SizedBox(
                               width: 10,
                             ),
-                            myInkwell("Location", () {
+                            myInkwell("Location".tr, () {
                               controller.getLoc();
                             }),
-                            myInkwell("Price", () {
+                            myInkwell("Price".tr, () {
                               controller.lowestPrice();
                             }),
-                            myInkwell("Active", () {
+                            myInkwell("Active".tr, () {
                               controller.getActive();
                             }),
                           ],
                         ),
+                       // SizedBox(height: 150,),
                       ],
                     ),
                   ),
-                ),
+                ),  //filters
                 Center(
                   child: Container(
                     height: 600,
@@ -66,13 +69,16 @@ class Location extends StatelessWidget {
                       scrollDirection: Axis.vertical,
                       itemCount: controller.data.length,
                       itemBuilder: (context, i) {
+                        index = i; // Assign the current index value to index variable
                         return Container(
-                          child: detailsOfPersona(context,
-                            controller.data[i]["image"],
+                          child: detailsOfPersona(context ,
+                              controller.data[i]["image"],
                             controller.data[i]["name"],
                             controller.data[i]["adress"],
                             controller.data[i]["price"].toString(),
                             controller.data[i]["rate"].toString(),
+                            i ,
+
                           ),
                         );
                       },
@@ -116,11 +122,14 @@ Widget detailsOfPersona(
     String location,
     String price,
     String rate,
+    int index,
     ) {
+  //final personData = controller.data[index]; // Retrieve personData using index
   return Padding(
     padding: const EdgeInsets.all(8.0),
     child: Column(
       children: [
+
         Container(
           height: 500,
           decoration: BoxDecoration(
@@ -260,11 +269,15 @@ Widget detailsOfPersona(
                           width: 150,
                           child: MaterialButton(
                             onPressed: () {
-                              Navigator.push(
-                                  context, MaterialPageRoute(
-                                  builder: (context) =>
-                                      DoctorProfilePage())
-                              );
+                                Get.to(DoctorProfilePage(),
+                                    arguments:index
+                                );
+
+                              // Navigator.push(
+                              //     context, MaterialPageRoute(
+                              //     builder: (context) =>
+                              //         DoctorProfilePage())
+                              // );
 
                             },
                             child: Text(
@@ -286,7 +299,7 @@ Widget detailsOfPersona(
                           width: 150,
                           child: MaterialButton(
                               onPressed: () {
-                                // Get.to(priceOfServant());
+                                 Get.to(priceOfServant());
                               },
                               child: Text(
                                 "order",
