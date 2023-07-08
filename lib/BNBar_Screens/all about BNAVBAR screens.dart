@@ -6,9 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
-import 'package:graduation_project/reg&login_Screen%20(auth)/signUpAsNusre.dart';
+import 'package:graduation_project/reg&login_Screen%20(auth)/signInAsNurse.dart';
 import '../providers_Folder/controller.dart';
-import '../reg&login_Screen (auth)/userType.dart';
 import 'settings.dart';
 import 'Services_App_Screen/serviceScreen.dart';
 import 'doctorDetailsOfProfile.dart';
@@ -51,7 +50,7 @@ class BNAVBAR extends StatelessWidget {
                   Stack( fit: StackFit.passthrough,
                     children: [
                       CircleAvatar(child:IconButton(onPressed: () {
-                        Get.to(userType());
+                        Get.to(SignInAsNurse());
                       }, icon:Icon(Icons.login_sharp) ),
                         backgroundColor: Colors.grey[300],) ,
 

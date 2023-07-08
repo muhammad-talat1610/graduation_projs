@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'package:graduation_project/reg&login_Screen%20(auth)/signUpAsNusre.dart';
-import 'package:graduation_project/reg&login_Screen%20(auth)/userType.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -30,7 +29,7 @@ class _SignInState extends State<SignInAsNurse> {
         _isLoading = true;
       });
 
-      final url = Uri.parse('https://care-for-you-v1.000webhostapp.com/api/auth/login');
+      final url = Uri.parse('https://care-for-you-v1.000webhostapp.com/api/auth/login?');
       final response = await http.post(
         url,
         body: {
@@ -71,7 +70,7 @@ class _SignInState extends State<SignInAsNurse> {
           Stack( fit: StackFit.passthrough,
             children: [
               CircleAvatar(child:IconButton(onPressed: () {
-                Get.to(userType());
+                Get.to(SignInAsNurse());
               }, icon:Icon(Icons.login_sharp) ), backgroundColor: Colors.grey[300],) ,
 
             ],
@@ -90,27 +89,27 @@ class _SignInState extends State<SignInAsNurse> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                 Center(child: Text("Care For You." , style: TextStyle(fontSize: 40 , fontWeight: FontWeight.bold ),)),
+                 Center(child: Text("Care For You." , style: TextStyle(fontSize: 30 , fontWeight: FontWeight.bold ),)),
                     SizedBox(height: 15,),
-                    Center(child: Text("Sign In" ,  style: TextStyle(fontSize: 35 , fontWeight: FontWeight.bold ,),)),
+                    Center(child: Text("Sign In" ,  style: TextStyle(fontSize: 28 , fontWeight: FontWeight.bold ,),)),
                     SizedBox(height: 15,),
                     Center(child: Text("Nursing , Care , Help" , style: TextStyle(fontSize: 18 , fontWeight: FontWeight.w400 , ),)),
                    SizedBox(height: 30,),
-                    Row( mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text("Sign as a" , style: TextStyle(fontSize: 33 , fontWeight: FontWeight.bold , ),),
-                        Text(" Nusre" ,  style: TextStyle(fontSize: 33 , fontWeight: FontWeight.bold , color: mainColor),),
-                      ],
-                    ),
+                    // Row( mainAxisAlignment: MainAxisAlignment.center,
+                    //   children: [
+                    //     Text("Sign as a" , style: TextStyle(fontSize: 33 , fontWeight: FontWeight.bold , ),),
+                    //     Text(" Nusre" ,  style: TextStyle(fontSize: 33 , fontWeight: FontWeight.bold , color: mainColor),),
+                    //   ],
+                    // ),
                   ],
                 ),
 
-            SizedBox(height: 20.0,),
+            SizedBox(height: 30.0,),
             TextFormFieldScreen(controller: emailController, keyboardType: TextInputType.emailAddress, label:"Enter Your Email ",
               prefix: Icons.email, validator: (value) { return
                 ValidatorScreen(value!, 5, 90, "emailController");
               },),
-            SizedBox(height: 7.0,),
+            SizedBox(height: 20.0,),
             GetBuilder<ShowPasswordClass>(builder: (controller) {
               return TextFormFieldScreen(
                   obsureText: controller.isshowPassword,
@@ -133,7 +132,8 @@ class _SignInState extends State<SignInAsNurse> {
                   style: TextStyle(fontSize: 15 , color: Colors.cyan),),onPressed: () {
                   //Get.to(forgetPassword());
                   },),],),
-            MaterialButtonScreen(titleOfButton: "LOGIN",Icons: Icons.login_outlined , fontSize: 25 , colorOfButton: mainColor,
+            MaterialButtonScreen(titleOfButton: "LOGIN",Icons: Icons.login_outlined , fontSize: 25 ,
+              colorOfButton: mainColor,
               onPressed: () async {
      if (FormKey.currentState!.validate()) {
     _login();}},),

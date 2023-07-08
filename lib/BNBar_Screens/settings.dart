@@ -70,7 +70,7 @@ Spacer(),
                       langController.changeLanguage("ar");
                       Get.to(BNAVBAR());
                     }, child: Text("Arabic".tr , style:
-                    TextStyle( fontFamily: "cairo", fontSize: 20 ,color:grayColor ,fontWeight: FontWeight.bold, fontStyle:FontStyle.normal )
+                    TextStyle( fontFamily: "cairo", fontSize: 18 ,color:grayColor ,fontWeight: FontWeight.bold, fontStyle:FontStyle.normal )
                     )),
               ),
               SizedBox(width: 10),
@@ -78,7 +78,7 @@ Spacer(),
                 child: MaterialButton( color: mainColor,onPressed: () {  langController.changeLanguage("en");
                 Get.to(BNAVBAR());
                 }, child: Text("English".tr , style:
-                TextStyle( fontFamily: "cairo", fontSize: 20 ,color: grayColor ,fontWeight: FontWeight.bold, fontStyle:FontStyle.normal )
+                TextStyle( fontFamily: "cairo", fontSize: 17 ,color: grayColor ,fontWeight: FontWeight.bold, fontStyle:FontStyle.normal )
                 )),
               ),
             ],

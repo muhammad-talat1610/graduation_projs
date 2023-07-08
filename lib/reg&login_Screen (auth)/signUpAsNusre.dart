@@ -4,10 +4,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:graduation_project/reg&login_Screen%20(auth)/signInAsNurse.dart';
-import 'package:graduation_project/reg&login_Screen%20(auth)/userType.dart';
 import 'package:http/http.dart' as http;
 import 'package:get/get_core/src/get_main.dart';
-import '../BNBar_Screens/all about BNAVBAR screens.dart';
+import '../BNBar_Screens/doctorDetailsOfProfile.dart';
 import '../services/colors.dart';
 import '../widget/widgets screen (all widgets).dart';
 
@@ -35,7 +34,7 @@ Future<void> _register() async {
 
   if (response.statusCode == 200) {
     // Registration successful, redirect to home screen
-    Get.off(BNAVBAR());
+    Get.off(doctorDetailsOfProfile());
   } else {
     // Registration failed, show error message
     ScaffoldMessenger.of(context).showSnackBar(
@@ -56,7 +55,7 @@ Future<void> _register() async {
           Stack( fit: StackFit.passthrough,
             children: [
               CircleAvatar(child:IconButton(onPressed: () {
-                Get.to(userType());
+                Get.to(SignInAsNurse());
               }, icon:Icon(Icons.login_sharp) ), backgroundColor: Colors.grey[300],) ,
 
             ],
@@ -74,9 +73,9 @@ Future<void> _register() async {
             children: [
               Column( crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                      Center(child: Text("Care For You." , style: TextStyle(fontSize: 40 , fontWeight: FontWeight.bold , color: mainColor),)),
+                      Center(child: Text("Care For You." , style: TextStyle(fontSize: 30 , fontWeight: FontWeight.bold , color: mainColor),)),
                        SizedBox(height: 20,),
-                      Center(child: Text("Sign Up" ,  style: TextStyle(fontSize: 40 , fontWeight: FontWeight.bold , color: mainColor),)),
+                      Center(child: Text("Sign Up" ,  style: TextStyle(fontSize: 30 , fontWeight: FontWeight.bold , color: mainColor),)),
                        SizedBox(height: 20,),
                       Center(child: Text("Nursing , Care , Help" , style: TextStyle(fontSize: 18 , fontWeight: FontWeight.w400 , color: mainColor),)),
                 ],
@@ -146,7 +145,8 @@ Future<void> _register() async {
                                     onPressed: () {
                   if (FormKeySignUp.currentState!.validate()) {
                     FormKeySignUp.currentState!.save();
-                  _register();
+                 _register();
+                //    Get.to(doctorDetailsOfProfile());
                   }},),
 
 
@@ -155,7 +155,7 @@ Future<void> _register() async {
                                     children: [
                                     Text("Do you have any accout?"),
                                     TextButton(child:Text("Sign in" , style: TextStyle(color: mainColor , fontWeight: FontWeight.bold ,
-                                        fontSize: 20 ,
+                                        fontSize: 18 ,
                                     ),textAlign: TextAlign.end, ), onPressed: () {
                                       Get.to(SignInAsNurse());
 

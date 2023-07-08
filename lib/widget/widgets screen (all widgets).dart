@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:graduation_project/services/colors.dart';
 
 ValidatorScreen(String value, int min, int max, String type) {
   if (type == "usernameController") {
@@ -229,7 +230,7 @@ Widget WelcomeMessageInRegisterScreen({required String mainTitle ,String? welcom
           Text(
             '${mainTitle}',
             style: TextStyle( fontFamily: "cairo",
-                fontSize: 42, fontWeight: FontWeight.bold , color:Colors.cyan),
+                fontSize: 42, fontWeight: FontWeight.bold , color:mainColor),
           ),
           SizedBox(height: 15.0,),
           Text(
