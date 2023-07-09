@@ -15,77 +15,89 @@ class Location extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<getxController>(builder: (controller) {
       return Scaffold(
-            body: Column(
-              children: [
-                SizedBox(
-                  height: 30,
-                ),
-                Expanded(
-                  child: Container(
-                    height: 140,
-                    child: Column( mainAxisAlignment: MainAxisAlignment.start,
+            body: SingleChildScrollView(
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: 30,
+                  ),
+                  Container(
+                    height: 160,
+                    width: double.infinity,
+                    child: Column(
                       children: [
                         Row(
                           children: [
-                            SizedBox(
-                              width: 10,
+                            Expanded(
+                              child: Column(
+                                children: [
+                                  myInkwell("All".tr, () {
+                                    controller.getAll();
+                                  }),
+                                  myInkwell("Location".tr, () {
+                                    controller.getLoc();
+                                  }),
+
+                                ],
+                              ),
                             ),
-                            myInkwell("All".tr, () {
-                              controller.getAll();
-                            }),
-                            myInkwell("Male".tr, () {
-                              controller.getMale();
-                            }),
-                            myInkwell("Female".tr, () {
-                              controller.getFemale();
-                            }),
+                            Expanded(
+                              child: Column(
+                                children: [
+
+                                      myInkwell("Price".tr, () {
+                                        controller.lowestPrice();
+                                      }),
+                                      myInkwell("Active".tr, () {
+                                        controller.getActive();
+                                      })
+                                ],
+                              ),
+                            ),
+                            Expanded(
+                              child: Column(
+                                children: [
+                                  myInkwell("Male".tr, () {
+                                    controller.getMale();
+                                  }),
+                                  myInkwell("Female".tr, () {
+                                    controller.getFemale();
+                                  }),
+                                ],
+                              ),
+                            ),
                           ],
                         ),
-                        Row(
-                          children: [
-                            SizedBox(
-                              width: 10,
-                            ),
-                            myInkwell("Location".tr, () {
-                              controller.getLoc();
-                            }),
-                            myInkwell("Price".tr, () {
-                              controller.lowestPrice();
-                            }),
-                            myInkwell("Active".tr, () {
-                              controller.getActive();
-                            }),
-                          ],
-                        ),
-                       // SizedBox(height: 150,),
                       ],
                     ),
                   ),
-                ),  //filters
-                Center(
-                  child: Container(
-                    height: 600,
-                    child: ListView.builder(
-                      scrollDirection: Axis.vertical,
-                      itemCount: controller.data.length,
-                      itemBuilder: (context, i) {
-                        index = i; // Assign the current index value to index variable
-                        return Container(
-                          child: detailsOfPersona(context ,
-                              controller.data[i]["image"],
-                            controller.data[i]["name"],
-                            controller.data[i]["adress"],
-                            controller.data[i]["price"].toString(),
-                            controller.data[i]["rate"].toString(),
-                            i ,
+ //filters
+                  SizedBox(height: 15,),
+                  Center(
+                    child: Container(
+                      height: 600,
+                      child: ListView.builder(
+                        scrollDirection: Axis.vertical,
+                        itemCount: controller.data.length,
+                        itemBuilder: (context, i) {
+                          index = i; // Assign the current index value to index variable
+                          return Container(
+                            child: detailsOfPersona(context ,
+                                controller.data[i]["image"],
+                              controller.data[i]["name"],
+                              controller.data[i]["adress"],
+                              controller.data[i]["price"].toString(),
+                              controller.data[i]["rate"].toString(),
+                              i ,
 
-                          ),
-                        );
-                      },
+                            ),
+                          );
+                        },
+                      ),
                     ),
                   ),
-                ),
-              ],
+                SizedBox(height: 500,)],
+              ),
             ),
           );
         },
@@ -125,38 +137,26 @@ Widget detailsOfPersona(
     int index,
     ) {
   //final personData = controller.data[index]; // Retrieve personData using index
-  return Padding(
-    padding: const EdgeInsets.all(8.0),
+  return  Padding(
+    padding: const EdgeInsets.all(5.0),
     child: Column(
       children: [
-
         Container(
-          height: 500,
+         // height: 500,
           decoration: BoxDecoration(
             gradient: SweepGradient(
               center: Alignment.centerLeft,
               colors: [grayColor!, mainColor],
             ),
-            borderRadius: BorderRadius.all(Radius.circular(10)),
+            borderRadius: BorderRadius.circular(10),
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(
-                height: 140,
-              ),
+              SizedBox(height: 100),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  // IconButton(
-                  //   onPressed: () {
-                  //     // setState(() {
-                  //     //   currentIndex = currentIndex == 0 ? 3 : currentIndex - 1;
-                  //     // });
-                  //   },
-
-                  //   icon: Icon(Icons.arrow_back_ios, size: 50,color: mainColor)
-                  //   ),
                   Spacer(),
                   Center(
                     child: Stack(
@@ -172,54 +172,47 @@ Widget detailsOfPersona(
                     ),
                   ),
                   Spacer(),
-                  // IconButton(
-                  //   onPressed: () {
-                  //     // setState(() {
-                  //     //   currentIndex = currentIndex == 3 ? 0 : currentIndex + 1;
-                  //     // });
-                  //   },
-                  //   icon: Icon(Icons.arrow_forward_ios, size: 50,color: mainColor,),
-
-                  // ),
                 ],
               ),
               Column(
                 children: [
                   Text(
-                    (name),
+                    name,
                     style: TextStyle(
-                      fontSize: 30,
+                      fontSize: 20,
                       fontWeight: FontWeight.bold,
                       color: mainColor,
                     ),
                   ),
                   SizedBox(height: 7),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Row(
-                        children: [
-                          Text(
-                            "Adress :",
-                            style: TextStyle(
-                              fontSize: 18,
-                              color: mainColor,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          Text(
-                            "$location",
-                            style: TextStyle(
-                              fontSize: 12,
-                              color: mainColor,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
+                      Text(
+                        "Location : ".tr,
+                        style: TextStyle(
+                          fontSize: 17,
+                          color: mainColor,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                      SizedBox(
-                        width: 5,
+                      Expanded(
+                        child: Column(
+                          children: [
+                            Text(
+                              "${location}",
+                               textAlign: TextAlign.center,
+                              // maxLines: 2, overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                fontSize: 14,
+                                color: mainColor,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
+                      SizedBox(width: 5),
                       Icon(Icons.location_history),
                     ],
                   ),
@@ -228,7 +221,15 @@ Widget detailsOfPersona(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        "Price :$price",
+                        "Price : ".tr,
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: mainColor,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Text(
+                        "${price}",
                         style: TextStyle(
                           fontSize: 18,
                           color: mainColor,
@@ -243,7 +244,15 @@ Widget detailsOfPersona(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        "Rate :$rate",
+                        "Rate : ".tr,
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: mainColor,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Text(
+                        "${rate}",
                         style: TextStyle(
                           fontSize: 18,
                           color: mainColor,
@@ -253,9 +262,7 @@ Widget detailsOfPersona(
                       Icon(Icons.star),
                     ],
                   ),
-                  SizedBox(
-                    height: 20,
-                  ),
+                  SizedBox(height: 20),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16.0),
                     child: Row(
@@ -268,24 +275,14 @@ Widget detailsOfPersona(
                           height: 40,
                           width: 150,
                           child: MaterialButton(
-                            onPressed: () {
-                                Get.to(DoctorProfilePage(),
-                                    arguments:index
-                                );
-
-                              // Navigator.push(
-                              //     context, MaterialPageRoute(
-                              //     builder: (context) =>
-                              //         DoctorProfilePage())
-                              // );
-
-                            },
+                            onPressed: () {Get.to(DoctorProfilePage());},
                             child: Text(
-                              "show more",
+                              "show more".tr,
                               style: TextStyle(
-                                  color: grayColor,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 22),
+                                color: grayColor,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20,
+                              ),
                             ),
                           ),
                         ),
@@ -298,30 +295,33 @@ Widget detailsOfPersona(
                           height: 40,
                           width: 150,
                           child: MaterialButton(
-                              onPressed: () {
-                                 Get.to(priceOfServant());
-                              },
-                              child: Text(
-                                "order",
-                                style: TextStyle(
-                                    color: grayColor,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 22),
-                              )),
+                            onPressed: () {
+                              Get.to(priceOfServant());
+                            },
+                            child: Text(
+                              "order".tr,
+                              style: TextStyle(
+                                color: grayColor,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 22,
+                              ),
+                            ),
+                          ),
                         ),
-                        SizedBox(
-                          width: 10,
-                        ),
+
                       ],
                     ),
                   ),
+
                 ],
               ),
             ],
           ),
         ),
+        SizedBox(height: 20,)
       ],
     ),
   );
+
 }
 

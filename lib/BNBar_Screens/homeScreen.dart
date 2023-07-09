@@ -1,8 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:graduation_project/Doctor%20details.dart';
 import '../services/colors.dart';
+import '../widget/widgets screen (all widgets).dart';
 import 'Services_App_Screen/priceOfServent.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class homeScreen extends StatefulWidget {
   @override
@@ -39,61 +42,61 @@ class _HomeScreenState extends State<homeScreen> {
         child: Column(
           children: [
             SizedBox(height: 2),
-            // Padding(
-            //   padding: const EdgeInsets.all(5.0),
-            //   child: Container(
-            //     decoration: BoxDecoration(
-            //       borderRadius: BorderRadius.zero,
-            //       color: Colors.grey[300],
-            //     ),
-            //     width: double.infinity,
-            //     child: Column(
-            //       children: [
-            //         Image(image: AssetImage("assets/images/logoHome.png"), fit: BoxFit.fill),
-            //         SizedBox(height: 20),
-            //         Center(
-            //           child: Text(
-            //             "Love Your Soul".tr,
-            //             style: TextStyle(
-            //               fontSize: 22.0,
-            //               fontFamily: "cairo",
-            //               color: mainColor,
-            //             ),
-            //           ),
-            //         ),
-            //         SizedBox(height: 2),
-            //         Text(
-            //           "we pour love and care in every patient".tr,
-            //           textAlign: TextAlign.center,
-            //           maxLines: 2,
-            //           style: TextStyle(
-            //             fontSize: 28.0,
-            //             fontFamily: "cairo",
-            //             color: mainColor,
-            //             fontWeight: FontWeight.bold,
-            //           ),
-            //         ),
-            //         Row(
-            //           crossAxisAlignment: CrossAxisAlignment.end,
-            //           mainAxisAlignment: MainAxisAlignment.center,
-            //           children: [
-            //             Icon(Icons.arrow_right_alt, size: 30, color: mainColor),
-            //             Text(
-            //               "we make you never lose hope".tr,
-            //               style: TextStyle(
-            //                 fontSize: 20.0,
-            //                 fontFamily: "cairo",
-            //                 color: mainColor,
-            //                 fontWeight: FontWeight.bold,
-            //               ),
-            //             ),
-            //           ],
-            //         ),
-            //         SizedBox(height: 20),
-            //       ],
-            //     ),
-            //   ),
-            // ),
+            Padding(
+              padding: const EdgeInsets.all(5.0),
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.zero,
+                  color: Colors.grey[300],
+                ),
+                width: double.infinity,
+                child: Column(
+                  children: [
+                    Image(image: AssetImage("assets/images/logoHome.png"), fit: BoxFit.fill),
+                    SizedBox(height: 20),
+                    Center(
+                      child: Text(
+                        "Love Your Soul".tr,
+                        style: TextStyle(
+                          fontSize: 22.0,
+                          fontFamily: "cairo",
+                          color: mainColor,
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 2),
+                    Text(
+                      "we pour love and care in every patient".tr,
+                      textAlign: TextAlign.center,
+                      maxLines: 2,
+                      style: TextStyle(
+                        fontSize: 28.0,
+                        fontFamily: "cairo",
+                        color: mainColor,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.arrow_right_alt, size: 30, color: mainColor),
+                        Text(
+                          "we make you never lose hope".tr,
+                          style: TextStyle(
+                            fontSize: 20.0,
+                            fontFamily: "cairo",
+                            color: mainColor,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 20),
+                  ],
+                ),
+              ),
+            ),
             SizedBox(height: 30),
             Text(
               "Top Ordered ".tr,
@@ -173,7 +176,15 @@ class _HomeScreenState extends State<homeScreen> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
-                                  "  Location :${locations[currentIndex]}",
+                                  "Location : ".tr,
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    color: mainColor,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                Text(
+                                  "${locations[currentIndex]}",
                                   style: TextStyle(
                                     fontSize: 18,
                                     color: mainColor,
@@ -189,7 +200,15 @@ class _HomeScreenState extends State<homeScreen> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
-                                  "Price :${prices[currentIndex]}",
+                                  "Price : ".tr,
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    color: mainColor,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                Text(
+                                  "${prices[currentIndex]}",
                                   style: TextStyle(
                                     fontSize: 18,
                                     color: mainColor,
@@ -204,7 +223,15 @@ class _HomeScreenState extends State<homeScreen> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
-                                  "Rate :${ratings[currentIndex]}",
+                                  "Rate : ".tr,
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    color: mainColor,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                Text(
+                                  "${ratings[currentIndex]}",
                                   style: TextStyle(
                                     fontSize: 18,
                                     color: mainColor,
@@ -227,9 +254,9 @@ class _HomeScreenState extends State<homeScreen> {
                                     height: 40,
                                     width: 150,
                                     child: MaterialButton(
-                                      onPressed: () {},
+                                      onPressed: () {Get.to(DoctorProfilePage());},
                                       child: Text(
-                                        "show more",
+                                        "show more".tr,
                                         style: TextStyle(
                                           color: grayColor,
                                           fontWeight: FontWeight.bold,
@@ -251,7 +278,7 @@ class _HomeScreenState extends State<homeScreen> {
                                         Get.to(priceOfServant());
                                       },
                                       child: Text(
-                                        "order",
+                                        "order".tr,
                                         style: TextStyle(
                                           color: grayColor,
                                           fontWeight: FontWeight.bold,
@@ -273,98 +300,99 @@ class _HomeScreenState extends State<homeScreen> {
               ),
             ),
             SizedBox(height: 40),
-            Padding(
-              padding: EdgeInsets.only(right: 20),
-              child: Container(
-                height: 160,
-                width: double.infinity,
-                child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  children:[
-                  Column(
+            Container(
+              height: 160,
+              width: double.infinity,
+              child: Column(mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Row(
                     children: [
-                      Text(
-                        "500+ ",
-                        style: TextStyle(
-                          fontSize: 25.0,
-                          fontFamily: "cairo",
-                          color: mainColor,
-                          fontWeight: FontWeight.bold,
+                      Expanded(
+                        child: Column(
+                          children: [
+                            Text(
+                              "500+ ",
+                              style: TextStyle(
+                                fontSize: 25.0,
+                                fontFamily: "cairo",
+                                color: mainColor,
+                                fontWeight: FontWeight.bold,
+
+                              ),
+                            ),
+                            Text(
+                              " patient every day ".tr,
+                              style: TextStyle(
+                                fontSize: 18.0,
+                                fontFamily: "cairo",
+                                color: mainColor,
+                              ),
+                            ),
+                            SizedBox(height: 10),
+                            Text(
+                              "100+ ",
+                              style: TextStyle(
+                                fontSize: 25.0,
+                                fontFamily: "cairo",
+                                color: mainColor,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            Text(
+                              " Experience Nurses ".tr,
+                              style: TextStyle(
+                                fontSize: 18.0,
+                                fontFamily: "cairo",
+                                color: mainColor,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
-                      Text(
-                        " patient every day ".tr,
-                        style: TextStyle(
-                          fontSize: 18.0,
-                          fontFamily: "cairo",
-                          color: mainColor,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      SizedBox(height: 10),
-                      Text(
-                        "100+ ",
-                        style: TextStyle(
-                          fontSize: 25.0,
-                          fontFamily: "cairo",
-                          color: mainColor,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Text(
-                        " Experience Nurses ".tr,
-                        style: TextStyle(
-                          fontSize: 18.0,
-                          fontFamily: "cairo",
-                          color: mainColor,
-                          fontWeight: FontWeight.bold,
+                      Expanded(
+                        child: Column(
+                          children: [
+                            Text(
+                              "2000+ ",
+                              style: TextStyle(
+                                fontSize: 25.0,
+                                fontFamily: "cairo",
+                                color: mainColor,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            Text(
+                              " Patient Capacity ".tr,
+                              style: TextStyle(
+                                fontSize: 18.0,
+                                fontFamily: "cairo",
+                                color: mainColor,
+                              ),
+                            ),
+                            SizedBox(height: 10),
+                            Text(
+                              "500+ ",
+                              style: TextStyle(
+                                fontSize: 25.0,
+                                fontFamily: "cairo",
+                                color: mainColor,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            Text(
+                              " Years Experience ".tr,
+                              style: TextStyle(
+                                fontSize: 18.0,
+                                fontFamily: "cairo",
+                                color: mainColor,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ],
                   ),
-                  Spacer(),
-                  Column(
-                    children: [
-                      Text(
-                        "2000+ ",
-                        style: TextStyle(
-                          fontSize: 25.0,
-                          fontFamily: "cairo",
-                          color: mainColor,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Text(
-                        " Patient Capacity ".tr,
-                        style: TextStyle(
-                          fontSize: 18.0,
-                          fontFamily: "cairo",
-                          color: mainColor,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Text(
-                        "500+ ",
-                        style: TextStyle(
-                          fontSize: 25.0,
-                          fontFamily: "cairo",
-                          color: mainColor,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Text(
-                        " Years Experience ".tr,
-                        style: TextStyle(
-                          fontSize: 18.0,
-                          fontFamily: "cairo",
-                          color: mainColor,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ],
-                  ),
-                  ],
-                ),
+                ],
               ),
             ),
             Container(
@@ -393,82 +421,7 @@ class _HomeScreenState extends State<homeScreen> {
                     ),
                   ),
                   SizedBox(height: 20),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Stack(
-                        fit: StackFit.passthrough,
-                        children: [
-                          CircleAvatar(
-                            child: IconButton(
-                              onPressed: () {},
-                              icon: Icon(Icons.facebook),
-                            ),
-                            backgroundColor: Colors.grey[300],
-                          ),
-                        ],
-                      ),
-                      SizedBox(width: 5),
-                      Stack(
-                        fit: StackFit.passthrough,
-                        children: [
-                          CircleAvatar(
-                            backgroundColor: grayColor,
-                            child: Image(
-                              image: AssetImage("assets/icons/linkedin.png"),
-                              height: 24,
-                            ),
-                            radius: 20,
-                          ),
-                        ],
-                      ),
-                      SizedBox(width: 5),
-                      Stack(
-                        fit: StackFit.passthrough,
-                        children: [
-                          CircleAvatar(
-                            backgroundColor: grayColor,
-                            child: Image(
-                              image: AssetImage("assets/icons/whatsapp.png"),
-                              height: 33,
-                            ),
-                            radius: 20,
-                          ),
-                        ],
-                      ),
-                      SizedBox(width: 5),
-                      Stack(
-                        fit: StackFit.passthrough,
-                        children: [
-                          CircleAvatar(
-                            child: IconButton(
-                              onPressed: () {},
-                              icon: Icon(
-                                Icons.email_outlined,
-                                color: Colors.red,
-                              ),
-                            ),
-                            backgroundColor: grayColor,
-                          ),
-                        ],
-                      ),
-                      SizedBox(width: 5),
-                      Stack(
-                        fit: StackFit.passthrough,
-                        children: [
-                          CircleAvatar(
-                            backgroundColor: grayColor,
-                            child: Image(
-                              image: AssetImage("assets/icons/github.png"),
-                              height: 25,
-                            ),
-                            radius: 20,
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ],
+                  socialMediaAccountWebsite()           ],
               ),
             ),
             SizedBox(height: 40),
@@ -477,4 +430,6 @@ class _HomeScreenState extends State<homeScreen> {
       ),
     );
   }
+
+
 }

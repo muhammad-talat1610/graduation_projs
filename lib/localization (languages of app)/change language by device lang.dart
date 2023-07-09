@@ -23,8 +23,10 @@ class  mylocale implements Translations {
           "Elderly Nursing": " رعاية المسنين",
           "Special Care" : "رعاية خاصة",
           "Emergency Nursing" :"    تمريض الطوارئ" ,
-          "Woman Nursing": "رعاية النساء",
-          "Psychiatric Nursing" : "التمريض النفسي",
+          "Woman Nursing": "رعاية السيدات ",
+          "Psychiatric Nursing" : "الرعاية النفسية",
+      "show more": "عرض المزيد",
+     "order" : "طلب" ,
       "All":"الكل " ,
       "Male":"الرجال",
       "Female":"النساء",
@@ -38,7 +40,9 @@ class  mylocale implements Translations {
       'Privacy policy':'خصوصية الامان',
       'Dark mode':'الوضع الداكن',
       'Settings':"الاعدادات",
-
+      "Price : ":"السعر : ",
+      "Rate : ":"التقييم : ",
+      "Location : " :"الموقع : " ,
 
       "12": "ادخل البريد الالكتروني",
       "13": "ادخل كلمة المرور",
@@ -105,9 +109,16 @@ class  mylocale implements Translations {
       'Privacy policy':'Privacy policy',
       'Dark mode':'Dark mode',
       'Settings':'Settings',
+      "show more": "show more",
+      "order" : "order" ,
+  "Price : ":"Price : ",
+  "Rate : ":"Rate : ",
+  "Location : " :"Location : " ,
 
 
-      "12": "Enter Your Email",
+
+
+  "12": "Enter Your Email",
       "13": "Enter Your Password",
       "14": "Forget Password",
       "15": "Sign In",

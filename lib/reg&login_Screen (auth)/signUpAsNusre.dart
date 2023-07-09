@@ -87,8 +87,7 @@ Future<void> _register() async {
                                     label: "Enter Your name",
                                     prefix: Icons.email,
                                     validator: (value) {
-                                      return
-                                        ValidatorScreen(value!, 2, 90, "usernameController");
+                                      return ValidatorScreen(value!, 2, 90, "usernameController");
                                     },),
                                   SizedBox(height: 10),
                                   TextFormFieldScreen(

@@ -9,7 +9,6 @@ import 'package:get/get.dart';
 class serviceScreen extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
 
     return
         Scaffold(
@@ -21,7 +20,7 @@ class serviceScreen extends StatelessWidget{
                 child: Container(width: 100,height: 310,margin:EdgeInsets.all(20),decoration: BoxDecoration(color: Color(0xff026670),borderRadius: BorderRadius.circular(10)),child:
                   Column(children: [SizedBox(height: 15,),
                   Text(""
-                        "Pediatric Nursing".tr,style: TextStyle(fontSize: 30,color: Colors.white),),
+                        "Pediatric Nursing".tr,style: TextStyle(fontSize: 23,color: Colors.white),),
                     SizedBox(height: 15,) ,
                     Expanded(child:  Image.asset("assets/images/Pediatric Nursing.jpg",
                       fit:BoxFit.fill,width: 700,))
@@ -31,11 +30,13 @@ class serviceScreen extends StatelessWidget{
                 },
               ),
               /////////////
-              InkWell(
+              InkWell(      onTap: (){ Get.to(Location());
+
+              },
                 child: Container(width: 100,height: 310,margin:EdgeInsets.all(20),decoration: BoxDecoration(color: Color(0xff026670),borderRadius: BorderRadius.circular(10)),child:
                 Column(children: [SizedBox(height: 15,),
                   Text(""
-                      "Elderly Nursing".tr,style: TextStyle(fontSize: 30,color: Colors.white),),
+                      "Elderly Nursing".tr,style: TextStyle(fontSize: 23,color: Colors.white),),
                   SizedBox(height: 15,) ,
                   Expanded(child:Image.asset("assets/images/Elderly Nursing.jpg",
                     fit:BoxFit.fill,width: 700,))
@@ -46,30 +47,26 @@ class serviceScreen extends StatelessWidget{
                   ,),
               ),
               //////////////////
-              InkWell(
+              InkWell(     onTap: (){ Get.to(Location());
+
+              } ,
                 child: Container(width: 100,height: 310,margin:EdgeInsets.all(20),decoration: BoxDecoration(color:  Color(0xff026670),borderRadius: BorderRadius.circular(10)),child:
                 Column(children: [SizedBox(height: 15,),
                   Text(""
-                      "Special Care".tr,style: TextStyle(fontSize: 30,color: Colors.white),),SizedBox(height: 15,) ,
+                      "Special Care".tr,style: TextStyle(fontSize: 23,color: Colors.white),),SizedBox(height: 15,) ,
                   Expanded(child:Image.asset("assets/images/Special Care.jpg",fit:BoxFit.fill,width: 700,))
 
                 ])
 
 
                   ,),
-                onTap: (){
-
-                  Navigator.push(context, MaterialPageRoute(
-                      builder: (context) =>
-                          Location()));
-                },
               ),
               //////////////////
-              InkWell(
+              InkWell(  onTap: (){ Get.to(Location());} ,
                 child: Container(width: 100,height: 310,margin:EdgeInsets.all(20),decoration: BoxDecoration(color:  Color(0xff026670),borderRadius: BorderRadius.circular(10)),child:
                 Column(children: [SizedBox(height: 15,),
                   Text(""
-                      "Emergency Nursing".tr,style: TextStyle(fontSize: 30,color: Colors.white),),SizedBox(height: 15,) ,
+                      "Emergency Nursing".tr,style: TextStyle(fontSize: 23,color: Colors.white),),SizedBox(height: 15,) ,
                   Expanded(child: Image.asset("assets/images/Emergency Nursing.jpg",fit:BoxFit.fill,width: 700,))
 
 
@@ -79,11 +76,12 @@ class serviceScreen extends StatelessWidget{
                   ,),
               ),
               //////////
-              InkWell(
+              InkWell(   onTap: (){ Get.to(Location());
+              } ,
                 child: Container(width: 100,height: 310,margin:EdgeInsets.all(20),decoration: BoxDecoration(color: Color(0xff026670),borderRadius: BorderRadius.circular(10)),child:
                 Column(children: [SizedBox(height: 15,),
                   Text(""
-                      "Woman Nursing".tr,style: TextStyle(fontSize: 30,color: Colors.white),),SizedBox(height: 15,) ,
+                      "Woman Nursing".tr,style: TextStyle(fontSize: 23,color: Colors.white),),SizedBox(height: 15,) ,
                   Expanded(child:Image.asset("assets/images/Woman Nursing.jpg",fit:BoxFit.fill,width: 700,) )
 
                 ])
@@ -92,11 +90,11 @@ class serviceScreen extends StatelessWidget{
                   ,),
               ),
               //////////
-              InkWell(
+              InkWell(  onTap: (){ Get.to(Location());} ,
                 child: Container(width: 100,height: 310,margin:EdgeInsets.all(20),decoration: BoxDecoration(color: Color(0xff026670),borderRadius: BorderRadius.circular(10)),child:
                 Column(children: [SizedBox(height: 15,),
                   Text(""
-                      "Psychiatric Nursing".tr,style: TextStyle(fontSize: 30,color: Colors.white),),SizedBox(height: 15,) ,
+                      "Psychiatric Nursing".tr,style: TextStyle(fontSize: 23,color: Colors.white),),SizedBox(height: 15,) ,
                   Expanded(child: Image.asset("assets/images/Psychiatric Nursing.jpg",fit:BoxFit.fill,width: 700,)) ,
                 ])
 

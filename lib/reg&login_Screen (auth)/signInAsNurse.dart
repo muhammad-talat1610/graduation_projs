@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:graduation_project/reg&login_Screen%20(auth)/resetPassword.dart';
 import 'package:graduation_project/reg&login_Screen%20(auth)/signUpAsNusre.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/cupertino.dart';
@@ -130,7 +131,7 @@ class _SignInState extends State<SignInAsNurse> {
                 TextButton(child: Text(
                   'Forget Password?' ,
                   style: TextStyle(fontSize: 15 , color: Colors.cyan),),onPressed: () {
-                  //Get.to(forgetPassword());
+                  Get.to(resetPassword());
                   },),],),
             MaterialButtonScreen(titleOfButton: "LOGIN",Icons: Icons.login_outlined , fontSize: 25 ,
               colorOfButton: mainColor,

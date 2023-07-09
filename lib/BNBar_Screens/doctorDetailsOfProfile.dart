@@ -12,6 +12,7 @@ class doctorDetailsOfProfile extends StatefulWidget {
 class _userprofileState extends State<doctorDetailsOfProfile> {
   final bool isRegistered = false;
   DateTime? _birthDate;
+  final TextEditingController usernameController = TextEditingController();
   TextEditingController _priceController = TextEditingController();
   TextEditingController _Location = TextEditingController();
   TextEditingController _Education = TextEditingController();
@@ -19,7 +20,6 @@ class _userprofileState extends State<doctorDetailsOfProfile> {
   var dateController = TextEditingController();
 
   String price = '';
-  final TextEditingController usernameController = TextEditingController();
   String ?selectedOption ;
   DateTime _selectedValue = DateTime.now();
   Future<void> _pickImage(ImageSource source) async {
@@ -42,95 +42,121 @@ class _userprofileState extends State<doctorDetailsOfProfile> {
               children: [
 
                 SizedBox(height: 50.0,),
-            isRegistered
-                ? Container(
-              width: 300,
-              height: 250,
-              child: Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
+
+                Stack(
                   children: [
                     if (_image != null)
                       Image.file(
-                        _image!,
+                        _image!,fit: BoxFit.cover,
+                        height: 220,
+                        width: 280
+                      ),
+                    if (_image == null)
+                      Image.asset(
+                        "assets/images/imageProfile.png",
                         height: 200,
                       ),
-                    SizedBox(height: 5),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 50.0, bottom: 50),
-                      child: IconButton(
+                    Positioned(
+                      top: 178, right: 80,
+                      child: ElevatedButton( child: Text("choose Image"),
                         onPressed: () => _pickImage(ImageSource.gallery),
-                        icon: Icon(
-                          Icons.picture_in_picture,
-                          size: 50,
-                        ),
+                        // icon: Icon(
+                        //   Icons.picture_in_picture,
+                        //   size: 50,
+                        // ),
                       ),
                     ),
                   ],
                 ),
-              ),
-            )
-                : Column(
-              children: [
-                Stack(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only( right: 60 ,left: 30 ),
-                      child: Image(image: AssetImage("assets/images/imageProfile.png")),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 200 , right: 47, left: 15 ),
-                      child: MaterialButtonScreen(titleOfButton: "Select Image" ,
-                        colorOfButton: Colors.blue, widthOfButton: 350,
-                        onPressed:(){_pickImage(ImageSource.gallery);},
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-
-            // isRegistered ? Container(
+                // isRegistered
+                //     ? _image != null
+                //     ? Container(
                 //   width: 300,
                 //   height: 250,
                 //   child: Center(
                 //     child: Column(
                 //       mainAxisAlignment: MainAxisAlignment.center,
                 //       children: [
-                //         if (_image != null)
-                //           Image.file(
-                //             _image!,
-                //             height: 200,
-                //           ),
-                //        SizedBox(height: 5),
-                //        Padding(
-                //          padding: const EdgeInsets.only(left: 10.0 , bottom: 50),
-                //          child: IconButton(
+                //         Image.file(
+                //           _image!,
+                //           height: 200,
+                //         ),
+                //         SizedBox(height: 5),
+                //         Padding(
+                //           padding: const EdgeInsets.only(left: 50.0, bottom: 50),
+                //           child: IconButton(
                 //             onPressed: () => _pickImage(ImageSource.gallery),
-                //             icon: Icon(Icons.picture_in_picture ,size: 50,),
-                //       //    child: Text('Pick Image'),
+                //             icon: Icon(
+                //               Icons.picture_in_picture,
+                //               size: 50,
+                //             ),
                 //           ),
-                //        ),
+                //         ),
                 //       ],
                 //     ),
                 //   ),
                 // )
-                // : Container(
-                //   width: double.infinity,
-                //   height: double.infinity,
-                //   color: Colors.green,
+                //     : Column(
+                //   children: [
+                //     Stack(
+                //       children: [
+                //         Padding(
+                //           padding: const EdgeInsets.only(right: 60, left: 30),
+                //           child: Image(image: AssetImage("assets/images/imageProfile.png")),
+                //         ),
+                //         Padding(
+                //           padding: const EdgeInsets.only(top: 200, right: 47, left: 15),
+                //           child: MaterialButtonScreen(
+                //             titleOfButton: "Select Image",
+                //             colorOfButton: Colors.blue,
+                //             widthOfButton: 350,
+                //             onPressed: () {
+                //               _pickImage(ImageSource.gallery);
+                //             },
+                //           ),
+                //         ),
+                //       ],
+                //     ),
+                //   ],
+                // )
+                //     : Column(
+                //   children: [
+                //     Stack(
+                //       children: [
+                //         Padding(
+                //           padding: const EdgeInsets.only(right: 60, left: 30),
+                //           child: Image(image: AssetImage("assets/images/imageProfile.png")),
+                //         ),
+                //         Padding(
+                //           padding: const EdgeInsets.only(top: 200, right: 47, left: 15),
+                //           child: MaterialButtonScreen(
+                //             titleOfButton: "Select Image",
+                //             colorOfButton: Colors.blue,
+                //             widthOfButton: 350,
+                //             onPressed: () {
+                //               _pickImage(ImageSource.gallery);
+                //             },
+                //           ),
+                //         ),
+                //       ],
+                //     ),
+                //   ],
                 // ),
+
+
+
+
+
                 SizedBox(height: 30,),
 
-                TextFormFieldForProfile(
+                TextFormFieldScreen(
                   controller: usernameController,
                   keyboardType: TextInputType.name,
-                  label: ' Your Full name'.toString() ,
-                  // validator: (value) {
-                  //   return
-                  //     ValidatorScreen(value!, 2, 90, "usernameController");
-                  // },
-                ),
+                  label: "Enter Your name",
+                  prefix: Icons.email,
+                  validator: (value) {
+                    return ValidatorScreen(value!, 2, 90, "usernameController");
+                  },),
                 SizedBox(height: 10),
                 TextFormFieldForProfile(
                   controller: _Location,

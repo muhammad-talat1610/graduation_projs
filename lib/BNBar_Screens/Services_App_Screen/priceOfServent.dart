@@ -17,7 +17,9 @@ body:SingleChildScrollView(
       child: Column(
         children: [
           SizedBox(height: 100,),
-  Row(children: [Text("Service Price:", style: TextStyle(color:Colors.black87 ,fontWeight: FontWeight.bold , fontSize: 30),),
+  Row( textBaseline: TextBaseline.alphabetic,
+    children: [
+    Text('Service Price:', style: TextStyle(color:Colors.black87 ,fontWeight: FontWeight.bold , fontSize: 30),),
           Spacer(),
           Text("2.4 \$", style: TextStyle(color:Colors.lightGreen[300] ,fontWeight: FontWeight.bold , fontSize: 25),),],),
             SizedBox(height: 30,),
