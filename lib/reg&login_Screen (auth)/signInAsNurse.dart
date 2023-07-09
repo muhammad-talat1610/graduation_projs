@@ -90,11 +90,11 @@ class _SignInState extends State<SignInAsNurse> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                 Center(child: Text("Care For You." , style: TextStyle(fontSize: 30 , fontWeight: FontWeight.bold ),)),
+                 Center(child: Text("Care For You" , style: TextStyle(fontSize: 30 , fontWeight: FontWeight.bold ),)),
                     SizedBox(height: 15,),
-                    Center(child: Text("Sign In" ,  style: TextStyle(fontSize: 28 , fontWeight: FontWeight.bold ,),)),
+                    Center(child: Text("Sign in".tr ,  style: TextStyle(fontSize: 28 , fontWeight: FontWeight.bold ,),)),
                     SizedBox(height: 15,),
-                    Center(child: Text("Nursing , Care , Help" , style: TextStyle(fontSize: 18 , fontWeight: FontWeight.w400 , ),)),
+                    Center(child: Text("Nursing , Care , Help".tr , style: TextStyle(fontSize: 18 , fontWeight: FontWeight.w400 , ),)),
                    SizedBox(height: 30,),
                     // Row( mainAxisAlignment: MainAxisAlignment.center,
                     //   children: [
@@ -106,7 +106,8 @@ class _SignInState extends State<SignInAsNurse> {
                 ),
 
             SizedBox(height: 30.0,),
-            TextFormFieldScreen(controller: emailController, keyboardType: TextInputType.emailAddress, label:"Enter Your Email ",
+            TextFormFieldScreen(controller: emailController,
+              keyboardType: TextInputType.emailAddress, label:"Enter Your Email ".tr,
               prefix: Icons.email, validator: (value) { return
                 ValidatorScreen(value!, 5, 90, "emailController");
               },),
@@ -116,7 +117,7 @@ class _SignInState extends State<SignInAsNurse> {
                   obsureText: controller.isshowPassword,
                   controller: passwordController,
                   keyboardType: TextInputType.name,
-                  label: "Enter Your Password",
+                  label: "Enter Your Password".tr,
                   prefix: Icons.lock,
                   validator: (value) {
                     return ValidatorScreen(value!, 6, 90, "password");
@@ -129,11 +130,11 @@ class _SignInState extends State<SignInAsNurse> {
             Row(mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 TextButton(child: Text(
-                  'Forget Password?' ,
+                  'Forget Password?'.tr ,
                   style: TextStyle(fontSize: 15 , color: Colors.cyan),),onPressed: () {
                   Get.to(resetPassword());
                   },),],),
-            MaterialButtonScreen(titleOfButton: "LOGIN",Icons: Icons.login_outlined , fontSize: 25 ,
+            MaterialButtonScreen(titleOfButton: "LOGIN".tr,Icons: Icons.login_outlined , fontSize: 25 ,
               colorOfButton: mainColor,
               onPressed: () async {
      if (FormKey.currentState!.validate()) {
@@ -157,8 +158,8 @@ class _SignInState extends State<SignInAsNurse> {
             SizedBox(height: 10,),
             Row(mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text("Do you have any accout?"),
-                TextButton(child:Text("Sign Up" , style: TextStyle(color: mainColor , fontWeight: FontWeight.bold ,
+                Text("Do you have any accout?".tr),
+                TextButton(child:Text("Sign Up".tr , style: TextStyle(color: mainColor , fontWeight: FontWeight.bold ,
                   fontSize: 20 ,
                 ),textAlign: TextAlign.end, ), onPressed: () {
                   Get.to(SignUpAsNurse());

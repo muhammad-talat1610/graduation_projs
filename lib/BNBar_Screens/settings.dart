@@ -97,14 +97,6 @@ Spacer(),
           ),
           Divider(),
           ListTile(
-            title: Text('Country'.tr),
-            subtitle: Text(selectedCountry),
-            onTap: () {
-              // Add logic to show a dialog to select a country
-            },
-          ),
-          Divider(),
-          ListTile(
             title: Text('Privacy policy'.tr),
             onTap: openPrivacyPolicy,
           ),

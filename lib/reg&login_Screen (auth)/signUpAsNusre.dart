@@ -73,39 +73,36 @@ Future<void> _register() async {
             children: [
               Column( crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                      Center(child: Text("Care For You." , style: TextStyle(fontSize: 30 , fontWeight: FontWeight.bold , color: mainColor),)),
+                      Center(child: Text("Care For You" , style: TextStyle(fontSize: 30 , fontWeight: FontWeight.bold , color: mainColor),)),
                        SizedBox(height: 20,),
-                      Center(child: Text("Sign Up" ,  style: TextStyle(fontSize: 30 , fontWeight: FontWeight.bold , color: mainColor),)),
+                      Center(child: Text("Sign Up".tr ,  style: TextStyle(fontSize: 30 , fontWeight: FontWeight.bold , color: mainColor),)),
                        SizedBox(height: 20,),
-                      Center(child: Text("Nursing , Care , Help" , style: TextStyle(fontSize: 18 , fontWeight: FontWeight.w400 , color: mainColor),)),
+                      Center(child: Text("Nursing , Care , Help".tr , style: TextStyle(fontSize: 18 , fontWeight: FontWeight.w400 , color: mainColor),)),
                 ],
               ),
               SizedBox(height: 50,),
                                   TextFormFieldScreen(
                                     controller: usernameController,
                                     keyboardType: TextInputType.name,
-                                    label: "Enter Your name",
+                                    label: "Enter Your name".tr,
                                     prefix: Icons.email,
                                     validator: (value) {
                                       return ValidatorScreen(value!, 2, 90, "usernameController");
                                     },),
                                   SizedBox(height: 10),
-                                  TextFormFieldScreen(
-                                    controller: emailController,
-                                    keyboardType: TextInputType.emailAddress,
-                                    label: "Enter Your Email",
-                                    prefix: Icons.email,
-                                    validator: (value) {
-                                      return
-                                        ValidatorScreen(value!, 5, 90, "email");
-                                    },),
-                                  SizedBox(height: 20.0,),
+              TextFormFieldScreen(controller: emailController,
+                keyboardType: TextInputType.emailAddress, label:"Enter Your Email ".tr,
+                prefix: Icons.email, validator: (value) { return
+                  ValidatorScreen(value!, 5, 90, "emailController");
+                },),
+
+              SizedBox(height: 20.0,),
                                   GetBuilder<ShowPasswordClass>(builder: (controller) {
                                     return TextFormFieldScreen(
                                         obsureText: controller.isshowPassword,
                                         controller: passwordController1,
                                         keyboardType: TextInputType.name,
-                                        label: "Enter New Password",
+                                        label: "Enter New Password".tr,
                                         prefix: Icons.lock,
                                         validator: (value) {
                                           return ValidatorScreen(value!, 6, 90, "passwordController1");},
@@ -120,7 +117,7 @@ Future<void> _register() async {
                                         obsureText: controller.isshowPassword,
                                         controller:passwordController2,
                                         keyboardType: TextInputType.name,
-                                        label: "Re Enter New Password",
+                                        label: "Re Enter New Password".tr,
                                         prefix: Icons.lock,
                                         validator: (value) {
                                           if (value != passwordController1.text) {
@@ -136,7 +133,7 @@ Future<void> _register() async {
                                   }),
                                   SizedBox(height: 30.0,),
                                   MaterialButtonScreen(
-                                    titleOfButton: "Sign Up",
+                                    titleOfButton: "Sign Up".tr,
                                     widthOfButton: double.infinity,
                                     fontSize: 24,
                                     fontWeight: FontWeight.normal,
@@ -152,8 +149,8 @@ Future<void> _register() async {
                                   SizedBox(height: 10,),
                                   Row(mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                    Text("Do you have any accout?"),
-                                    TextButton(child:Text("Sign in" , style: TextStyle(color: mainColor , fontWeight: FontWeight.bold ,
+                                    Text("Do you have any accout?".tr),
+                                    TextButton(child:Text("Sign in".tr , style: TextStyle(color: mainColor , fontWeight: FontWeight.bold ,
                                         fontSize: 18 ,
                                     ),textAlign: TextAlign.end, ), onPressed: () {
                                       Get.to(SignInAsNurse());

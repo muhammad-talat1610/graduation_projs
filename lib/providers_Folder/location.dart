@@ -153,7 +153,7 @@ Widget detailsOfPersona(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(height: 100),
+              SizedBox(height: 140),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
@@ -186,7 +186,7 @@ Widget detailsOfPersona(
                   ),
                   SizedBox(height: 7),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start, crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         "Location : ".tr,
@@ -308,7 +308,7 @@ Widget detailsOfPersona(
                             ),
                           ),
                         ),
-
+SizedBox(height: 80,)
                       ],
                     ),
                   ),
@@ -318,7 +318,7 @@ Widget detailsOfPersona(
             ],
           ),
         ),
-        SizedBox(height: 20,)
+        SizedBox(height: 5,)
       ],
     ),
   );

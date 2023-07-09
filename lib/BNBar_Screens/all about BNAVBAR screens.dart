@@ -36,15 +36,8 @@ class BNAVBAR extends StatelessWidget {
         appBar: PreferredSize(
           child: AppBar(
             backgroundColor: mainColor,
-            title: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Image(
-                  image: AssetImage("assets/images/logoWhite.png"),
-                  height: 60,
-                  color: Colors.grey[300],
-                ),
-                Spacer(),
+            leading:   Row(
+              children: [SizedBox(width: 10,),
 
                 if (isRegistered == false)
                   Stack( fit: StackFit.passthrough,
@@ -62,6 +55,15 @@ class BNAVBAR extends StatelessWidget {
                   ),
               ],
             ),
+            title: Center(
+              child: Image(
+                image: AssetImage("assets/images/logoWhite.png"),
+                height: 60,
+                color: Colors.grey[300],
+              ),
+            ),
+
+
           ),
           preferredSize: Size.fromHeight(70),
         ),

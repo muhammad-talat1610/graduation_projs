@@ -56,14 +56,13 @@ class DoctorProfilePage extends StatelessWidget {
                     ),
                   ),
                   child: CircleAvatar(
-                    backgroundImage: NetworkImage(
-                      'https://oberlinreview.org/wp-content/uploads/2022/03/Christiano-Ronaldo_-Courtesy-of-Jan-Kruger-from-Getty-Images.jpg',
-                    ),
+                    backgroundImage: AssetImage("assets/images/avatar4.jpg"
+                           ),
                   ),
                 ),
               ),
-              _mainfont('Cristiano Ronaldo'),
-              _subfont('Top Scorer of history'),
+              _mainfont('muhammad ali'),
+          //    _subfont('Top Scorer of history'),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -89,7 +88,7 @@ class DoctorProfilePage extends StatelessWidget {
                       width: 165,
                     ),
                     Column(
-                      children: [_subfont("Price"), _mainfont("200M \$")],
+                      children: [_subfont("Price"), _mainfont("5 \$")],
                     )
                   ],
                 ),

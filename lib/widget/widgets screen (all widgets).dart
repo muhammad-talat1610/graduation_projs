@@ -3,6 +3,36 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:graduation_project/services/colors.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:flutter_map/flutter_map.dart';
+import 'package:latlong2/latlong.dart';
+
+Future<LatLng?> getLocation() async {
+  bool serviceEnabled;
+  LocationPermission permission;
+
+  // التحقق من تفعيل خدمة الموقع والحصول على إذن الموقع
+  serviceEnabled = await Geolocator.isLocationServiceEnabled();
+  if (!serviceEnabled) {
+    return null;
+  }
+
+  permission = await Geolocator.checkPermission();
+  if (permission == LocationPermission.deniedForever) {
+    return null;
+  }
+
+  if (permission == LocationPermission.denied) {
+    permission = await Geolocator.requestPermission();
+    if (permission != LocationPermission.whileInUse && permission != LocationPermission.always) {
+      return null;
+    }
+  }
+
+  // الحصول على الموقع الحالي
+  Position position = await Geolocator.getCurrentPosition();
+  return LatLng(position.latitude, position.longitude);
+}
 
 
 class socialMediaAccountWebsite extends StatelessWidget {
