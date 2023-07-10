@@ -51,13 +51,14 @@ class  mylocale implements Translations {
       'Forget Password?':" نسيت كلمة السر ؟",
           "LOGIN":"تسجيل الدخول" ,
           "Do you have any accout?":"لديك حساب بالفعل ؟",
+          "Don\'t have any accout?":"ليس لديك حساب ؟",
           "Sign Up":"انشاء حساب",
       "Enter New Password":"ادخل كلمة السر الجديدة",
       "Re Enter New Password":"اعد ادخال كلمة السر الجديدة",
       "Please Enter a New Password":"من فضلك ادخل كلمة السر الجديدة",
       "New Password ":"كلمة سر جديدة",
       "Reset Password":"تعيين كلمة سر حديدة " ,
-      'Save':'حفظ',
+      "save Data":'حفظ    ',
   'Choose Your Location':'ادخل موقعك',
   "Your Education":"ادخل المرحلة التعليمية ",
   'Your Phone Number':'ادخل رقم هاتفك',
@@ -67,7 +68,11 @@ class  mylocale implements Translations {
   'Male':'ذكر',
   'Female': 'انثي',
   'Your Birthday':'ادخل تاريخ ميلادك ',
-  " The Servant Price :" :" سعر الخدمة :",
+      "The Servant Price :":" سعر الخدمة :",
+      "Your Full name":"ادخل اسمك",
+      "Location :":"الموقع :",
+      "Price :":"السعر :",
+          "Rate :" : "التقييم",
 
 
       "27": "فحص البريد الالكتروني",
@@ -131,6 +136,7 @@ class  mylocale implements Translations {
       'Forget Password?': 'Forget Password?',
       "LOGIN": "LOGIN" ,
       "Do you have any accout?":"Do you have any accout?",
+      "Don\'t have any accout?":"Don\'t have any accout?",
       "Sign in": "Sign In",
       "Enter New Password":"Enter New Password",
       "Re Enter New Password":"Re Enter New Password",
@@ -139,6 +145,7 @@ class  mylocale implements Translations {
       "New Password ":"New Password ",
       "Reset Password":"Reset Password",
       'Save':'Save',
+      "Your Full name":"Your Full name",
       'Choose Your Location':'Choose Your Location',
       "Your Education":"Your Education",
       'Your Phone Number':'Your Phone Number',
@@ -149,12 +156,15 @@ class  mylocale implements Translations {
       'Female': 'Female',
       'Your Birthday':'Your Birthday',
       " The Servant Price :" :" The Servant Price :",
+  "save Data": "save Data  ",
+      "Location :": "Location :",
+      "Price :":"Price :",
+      "Rate :" :  "Rate :",
 
 
 
 
-
-  "12": "Enter Your Email",
+      "12": "Enter Your Email",
       "13": "Enter Your Password",
       "14": "Forget Password",
       "15": "Sign In",

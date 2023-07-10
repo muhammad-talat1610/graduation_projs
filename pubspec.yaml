@@ -113,6 +113,7 @@ dev_dependencies:
   responsive_builder: ^0.4.2
   image_pickers: ^2.0.0+7
   permission_handler: ^10.4.2
+  get_storage: ^2.1.1
 
 
 

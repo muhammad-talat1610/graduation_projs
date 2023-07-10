@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
-import 'package:graduation_project/reg&login_Screen%20(auth)/signInAsNurse.dart';
+import 'package:graduation_project/reg&login_Screen%20(auth)/signIn.dart';
 import 'package:graduation_project/services/colors.dart';
 
 import '../widget/widgets screen (all widgets).dart';
@@ -30,15 +30,15 @@ class _resetPasswordState extends State<resetPassword> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   SizedBox(height: 50.0,) ,
-   WelcomeMessageInRegisterScreen(mainTitle: "Reset Password" ,
-       welcomeMessage: "New Password "  ,detailTitle: "Please Enter a New Password"),
+   WelcomeMessageInRegisterScreen(mainTitle: "Reset Password".tr ,
+       welcomeMessage: "New Password ".tr  ,detailTitle: "Please Enter a New Password".tr),
                   SizedBox(height: 30.0,) ,
                   GetBuilder<ShowPasswordClass>(builder: (controller) {
                     return TextFormFieldScreen(
                         obsureText: controller.isshowPassword,
                         controller: PasswordController1,
                         keyboardType: TextInputType.name,
-                        label: "Enter New Password",
+                        label: "Enter New Password".tr,
                         prefix: Icons.lock,
                         validator: (value) {
                           return ValidatorScreen(value!, 5, 90, "password");
@@ -54,7 +54,7 @@ class _resetPasswordState extends State<resetPassword> {
                         obsureText: controller.isshowPassword,
                         controller: PasswordController2,
                         keyboardType: TextInputType.name,
-                        label: "Re Enter New Password",
+                        label: "Re Enter New Password".tr,
                         prefix: Icons.lock,
                         validator: (value) {
                           if (value != PasswordController1.text) {

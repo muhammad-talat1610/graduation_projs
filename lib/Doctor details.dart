@@ -1,25 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:graduation_project/BNBar_Screens/all about BNAVBAR screens.dart';
 
 class DoctorProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // bottomNavigationBar: BNAVBAR().bnavbar(),
       appBar: AppBar(
-          backgroundColor:
-           Theme.of(context).appBarTheme.backgroundColor,
-           actions: [Padding(
-            padding: EdgeInsets.all(8),
-            child: Icon(Icons.facebook))],
-
+          backgroundColor: mainColor,
           title: Center(
-              child: Padding(
-            padding: EdgeInsets.fromLTRB(0, 0, 25, 0),
-            child: Text(
-              "Profile",
-              style: TextStyle(color: Colors.white),
-            ),
+              child: Text(
+            "Profile",
+            style: TextStyle(color: Colors.white),
+
           ))),
       body: detailsOfPersona(
           context,
@@ -54,7 +45,7 @@ class DoctorProfilePage extends StatelessWidget {
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 30, 0, 20),
                 child: Container(
-                  width: 150,
+                  width: 120,
                   height: 120,
                   clipBehavior: Clip.antiAlias,
                   decoration: BoxDecoration(
@@ -65,14 +56,13 @@ class DoctorProfilePage extends StatelessWidget {
                     ),
                   ),
                   child: CircleAvatar(
-                    backgroundImage: NetworkImage(
-                        "https://pbs.twimg.com/media/E7QRfFXWUAoqKUv?format=jpg&name=4096x4096"),
-                    radius: 50,
+                    backgroundImage: AssetImage("assets/images/avatar4.jpg"
+                           ),
                   ),
                 ),
               ),
-              _mainfont('Cristiano Ronaldo'),
-              _subfont('Top Scorer of History'),
+              _mainfont('muhammad ali'),
+          //    _subfont('Top Scorer of history'),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -98,7 +88,7 @@ class DoctorProfilePage extends StatelessWidget {
                       width: 165,
                     ),
                     Column(
-                      children: [_subfont("Price"), _mainfont("200M \$")],
+                      children: [_subfont("Price"), _mainfont("5 \$")],
                     )
                   ],
                 ),
@@ -108,21 +98,18 @@ class DoctorProfilePage extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      "     About:",
-                      style: TextStyle(
+                    Text("     About:",style:TextStyle(
                         fontSize: 18,
                         color: mainColor,
                         fontWeight: FontWeight.bold,
-                      ),
-                    ),
+                      ),),
                     Container(
                         decoration: BoxDecoration(
                             color: mainColor,
                             borderRadius: BorderRadius.circular(20)),
                         height: 300,
                         width: 500,
-                        margin: EdgeInsets.fromLTRB(16, 10, 16, 16),
+                        margin: EdgeInsets.fromLTRB(16,10,16,16),
                         child: Container(
                           margin: EdgeInsets.all(15),
                           child: Text(

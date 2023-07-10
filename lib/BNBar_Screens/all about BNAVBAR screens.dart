@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
-import 'package:graduation_project/reg&login_Screen%20(auth)/signInAsNurse.dart';
+import 'package:graduation_project/reg&login_Screen%20(auth)/signIn.dart';
 import '../providers_Folder/controller.dart';
 import 'settings.dart';
 import 'Services_App_Screen/serviceScreen.dart';
@@ -16,10 +16,8 @@ import '../services/colors.dart';
 
 
 List screens = [
- 
-  
-   homeScreen(),
-   serviceScreen(),
+  homeScreen(),
+  serviceScreen(),
   doctorDetailsOfProfile(),
   settingsDetailsScreen(),
 ];
@@ -37,16 +35,9 @@ class BNAVBAR extends StatelessWidget {
         extendBody: true,
         appBar: PreferredSize(
           child: AppBar(
-            backgroundColor:  Theme.of(context).appBarTheme.backgroundColor,
-            title: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Image(
-                  image: AssetImage("assets/images/logoWhite.png"),
-                  height: 60,
-                  color: Colors.grey[300],
-                ),
-                Spacer(),
+            backgroundColor: mainColor,
+            leading:   Row(
+              children: [SizedBox(width: 10,),
 
                 if (isRegistered == false)
                   Stack( fit: StackFit.passthrough,
@@ -64,6 +55,15 @@ class BNAVBAR extends StatelessWidget {
                   ),
               ],
             ),
+            title: Center(
+              child: Image(
+                image: AssetImage("assets/images/logoWhite.png"),
+                height: 60,
+                color: Colors.grey[300],
+              ),
+            ),
+
+
           ),
           preferredSize: Size.fromHeight(70),
         ),
@@ -72,39 +72,32 @@ class BNAVBAR extends StatelessWidget {
         // appBar:
 
        body: screens[controller.selectedIndex],
-        bottomNavigationBar:  bnavbar (controller)    );
-    });
-  }
-  
-  Widget bnavbar(controller){
-    return
-    BottomNavigationBar(
+        bottomNavigationBar: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
 
             backgroundColor: mainColor,
             selectedItemColor: Colors.black,
              unselectedItemColor: grayColor,
-             
             // unselectedLabelStyle: TextStyle(color:grayColor),
             // showUnselectedLabels: true,
-            //  unselectedIconTheme: IconThemeData(color: grayColor ,opacity: 1 ,),
-            //  selectedIconTheme: IconThemeData(color: Colors.black,),
+
              currentIndex: controller.selectedIndex,
             onTap: controller.onItemTapped,
 
             items: [
 
               BottomNavigationBarItem(
-                icon: Icon(Icons.home, size: 35 , ), label: 'home'),
+                icon: Icon(Icons.home, size: 35,), label: 'home'.tr),
               BottomNavigationBarItem(
-                  icon: Icon(Icons.medical_services, size: 33 ,), label: 'Services'),
+                  icon: Icon(Icons.medical_services, size: 33 ,), label: 'Services'.tr),
               BottomNavigationBarItem(
-                 icon: Icon(Icons.flash_on, size: 33,), label: 'Activity'),
+                 icon: Icon(Icons.flash_on, size: 33,), label: 'personal Page'.tr),
               BottomNavigationBarItem(
-                  icon: Icon(Icons.arrow_circle_down_rounded, size: 33, ), label: 'About'),
+                  icon: Icon(Icons.arrow_circle_down_rounded, size: 33, ), label: 'About'.tr),
 
-            ] ,);
-
+            ] ,),
+      );
+    });
   }
 }
 

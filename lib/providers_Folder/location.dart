@@ -1,3 +1,56 @@
+
+//                   Container(
+//                     height: 160,
+//                     width: double.infinity,
+//                     child: Column(
+//                       children: [
+//                         Row(
+//                           children: [
+//                             Expanded(
+//                               child: Column(
+//                                 children: [
+//                                   myInkwell("All".tr, () {
+//                                     controller.getAll();
+//                                   }),
+//                                   myInkwell("Location".tr, () {
+//                                     controller.getLoc();
+//                                   }),
+//
+//                                 ],
+//                               ),
+//                             ),
+//                             Expanded(
+//                               child: Column(
+//                                 children: [
+//
+//                                       myInkwell("Price".tr, () {
+//                                         controller.lowestPrice();
+//                                       }),
+//                                       myInkwell("Active".tr, () {
+//                                         controller.getActive();
+//                                       })
+//                                 ],
+//                               ),
+//                             ),
+//                             Expanded(
+//                               child: Column(
+//                                 children: [
+//                                   myInkwell("Male".tr, () {
+//                                     controller.getMale();
+//                                   }),
+//                                   myInkwell("Female".tr, () {
+//                                     controller.getFemale();
+//                                   }),
+//                                 ],
+//                               ),
+//                             ),
+//                           ],
+//                         ),
+//                       ],
+//                     ),
+//                   ),
+//  //filters
+//
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -9,59 +62,59 @@ import '../services/colors.dart';
 import 'package:graduation_project/BNBar_Screens/all about BNAVBAR screens.dart';
 
 class Location extends StatelessWidget {
-  
+
   getxController controller = Get.put(getxController());
-  
+
 
   Widget build(BuildContext context) {
-    
+
     return GetBuilder<getxController>(
       builder: (controller) {
         return Scaffold(
-          
-          body: 
-          
+
+          body:
+
           Column(
-                    children: [
-                      SizedBox(height: 40,),
-                      Padding(
-                           padding: EdgeInsets.fromLTRB(8, 0,0,0),child: 
-                      Row(
-                        children: [
-                          SizedBox(
-                            width: 10,
-                          ),
-                          myInkwell("All", () {
-                            controller.getAll();
-                          }),
-                          myInkwell("Male", () {
-                            controller.getMale();
-                          }),
-                          myInkwell("Female", () {
-                            controller.getFemale();
-                          }),
-                        ],
-                      ),
-                      ),Padding(
-                        padding: EdgeInsets.fromLTRB(8, 0,0,0),
-                        child: 
-                      Row(
-                        children: [
-                          SizedBox(
-                            width: 10,
-                          ),
-                          myInkwell("Location", () {
-                            controller.getLoc();
-                          }),
-                          myInkwell("Price", () {
-                            controller.lowestPrice();
-                          }),
-                          myInkwell("Active", () {
-                            controller.getActive();
-                          }),
-                        ],
-                      ),
-                      ),
+            children: [
+              SizedBox(height: 40,),
+              Padding(
+                padding: EdgeInsets.fromLTRB(8, 0,0,0),child:
+              Row(
+                children: [
+                  SizedBox(
+                    width: 10,
+                  ),
+                  myInkwell("All".tr, () {
+                    controller.getAll();
+                  }),
+                  myInkwell("Male".tr, () {
+                    controller.getMale();
+                  }),
+                  myInkwell("Female".tr, () {
+                    controller.getFemale();
+                  }),
+                ],
+              ),
+              ),Padding(
+                padding: EdgeInsets.fromLTRB(8, 0,0,0),
+                child:
+                Row(
+                  children: [
+                    SizedBox(
+                      width: 10,
+                    ),
+                    myInkwell("Location".tr, () {
+                      controller.getLoc();
+                    }),
+                    myInkwell("Price".tr, () {
+                      controller.lowestPrice();
+                    }),
+                    myInkwell("Active".tr, () {
+                      controller.getActive();
+                    }),
+                  ],
+                ),
+              ),
 
               Center(
                 child: Container(
@@ -99,9 +152,9 @@ class Location extends StatelessWidget {
       child: Container(
           child: Center(
               child: Text(
-            text,
-            style: TextStyle(color: Colors.grey[200], fontSize: 20),
-          )),
+                text,
+                style: TextStyle(color: Colors.grey[200], fontSize: 20),
+              )),
           width: 100.0,
           height: 50,
           margin: EdgeInsets.all(10),
@@ -114,15 +167,16 @@ class Location extends StatelessWidget {
 }
 
 Widget detailsOfPersona(
-  BuildContext context,
-  String image,
-  String name,
-  String location,
-  String price,
-  String rate,
-) {
+    BuildContext context,
+    String image,
+    String name,
+    String location,
+    String price,
+    String rate,
+    ) {
   final isDark=Theme.of(context).brightness==Brightness.dark;
-    dynamic cardcolor=isDark?Color(0x333739):grayColor;
+  dynamic cardcolor=isDark?Colors.black:grayColor;
+
   return Padding(
     padding: const EdgeInsets.all(8.0),
     child: Column(
@@ -145,15 +199,7 @@ Widget detailsOfPersona(
               Row(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  // IconButton(
-                  //   onPressed: () {
-                  //     // setState(() {
-                  //     //   currentIndex = currentIndex == 0 ? 3 : currentIndex - 1;
-                  //     // });
-                  //   },
 
-                  //   icon: Icon(Icons.arrow_back_ios, size: 50,color: mainColor)
-                  //   ),
                   Spacer(),
                   Center(
                     child: Stack(
@@ -169,15 +215,7 @@ Widget detailsOfPersona(
                     ),
                   ),
                   Spacer(),
-                  // IconButton(
-                  //   onPressed: () {
-                  //     // setState(() {
-                  //     //   currentIndex = currentIndex == 3 ? 0 : currentIndex + 1;
-                  //     // });
-                  //   },
-                  //   icon: Icon(Icons.arrow_forward_ios, size: 50,color: mainColor,),
 
-                  // ),
                 ],
               ),
               Column(
@@ -197,7 +235,7 @@ Widget detailsOfPersona(
                       Row(
                         children: [
                           Text(
-                            "Adress :",
+                            "Location :".tr,
                             style: TextStyle(
                               fontSize: 18,
                               color: mainColor,
@@ -221,11 +259,21 @@ Widget detailsOfPersona(
                     ],
                   ),
                   SizedBox(height: 5),
+
+
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        "Price :$price",
+                        "Price : ".tr,
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: mainColor,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Text(
+                        "${price}",
                         style: TextStyle(
                           fontSize: 18,
                           color: mainColor,
@@ -240,7 +288,15 @@ Widget detailsOfPersona(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        "Rate :$rate",
+                        "Rate : ".tr,
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: mainColor,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Text(
+                        "${rate}",
                         style: TextStyle(
                           fontSize: 18,
                           color: mainColor,
@@ -250,9 +306,8 @@ Widget detailsOfPersona(
                       Icon(Icons.star),
                     ],
                   ),
-                  SizedBox(
-                    height: 20,
-                  ),
+
+
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16.0),
                     child: Row(
@@ -273,7 +328,7 @@ Widget detailsOfPersona(
                                           DoctorProfilePage()));
                             },
                             child: Text(
-                              "show more",
+                              "show more".tr,
                               style: TextStyle(
                                   color: grayColor,
                                   fontWeight: FontWeight.bold,
@@ -294,23 +349,26 @@ Widget detailsOfPersona(
                                 Get.to(priceOfServant());
                               },
                               child: Text(
-                                "order",
+                                "order".tr,
                                 style: TextStyle(
                                     color: grayColor,
                                     fontWeight: FontWeight.bold,
                                     fontSize: 22),
                               )),
                         ),
-                        SizedBox(
-                          width: 10,
-                        ),
+
                       ],
                     ),
                   ),
+
                 ],
               ),
+
             ],
           ),
+        ),
+        SizedBox(
+          height: 10,
         ),
       ],
     ),

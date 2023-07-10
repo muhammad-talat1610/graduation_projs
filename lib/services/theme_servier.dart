@@ -6,7 +6,7 @@ import 'package:graduation_project/services/colors.dart';
 
 class ThemeService {
   final lightTheme = ThemeData.light().copyWith(
-      textTheme: TextTheme(bodyText1:TextStyle(fontSize: 30,color: Colors.black) 
+      textTheme: TextTheme(bodyText1:TextStyle(fontSize: 15,color: Colors.black) 
       ),
     primaryColor: Colors.blueGrey.shade300,
     appBarTheme: const AppBarTheme(
@@ -19,14 +19,14 @@ class ThemeService {
 
   final darkTheme = ThemeData.dark().copyWith(
       primaryColor: Colors.blue,
-      scaffoldBackgroundColor: Color(0x333739),
+      scaffoldBackgroundColor: Colors.white10,
       appBarTheme: const AppBarTheme(
          backgroundColor: Color(0xff026670),
           
       
         
         ),
-        textTheme: TextTheme(bodyText1:TextStyle(fontSize: 15,color: Colors.grey) 
+        textTheme: TextTheme(bodyText1:TextStyle(fontSize: 15,color: Colors.white) 
       ),
       dividerColor: Colors.white54,
       bottomAppBarTheme: BottomAppBarTheme(color: Colors.black),

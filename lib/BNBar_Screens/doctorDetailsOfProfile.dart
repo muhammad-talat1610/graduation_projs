@@ -1,9 +1,14 @@
 import 'dart:io';
+import 'package:graduation_project/providers_Folder/location.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:graduation_project/widget/widgets%20screen%20(all%20widgets).dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:intl/intl.dart';
+import 'package:get/get.dart';
+
+import '../services/colors.dart';
+
 
 class doctorDetailsOfProfile extends StatefulWidget {
   State<doctorDetailsOfProfile> createState() => _userprofileState();
@@ -42,55 +47,55 @@ class _userprofileState extends State<doctorDetailsOfProfile> {
               children: [
 
                 SizedBox(height: 50.0,),
-            isRegistered
-                ? Container(
-              width: 300,
-              height: 250,
-              child: Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    if (_image != null)
-                      Image.file(
-                        _image!,
-                        height: 200,
-                      ),
-                    SizedBox(height: 5),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 50.0, bottom: 50),
-                      child: IconButton(
-                        onPressed: () => _pickImage(ImageSource.gallery),
-                        icon: Icon(
-                          Icons.picture_in_picture,
-                          size: 50,
+                isRegistered
+                    ? Container(
+                  width: 300,
+                  height: 250,
+                  child: Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        if (_image != null)
+                          Image.file(
+                            _image!,
+                            height: 200,
+                          ),
+                        SizedBox(height: 5),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 50.0, bottom: 50),
+                          child: IconButton(
+                            onPressed: () => _pickImage(ImageSource.gallery),
+                            icon: Icon(
+                              Icons.picture_in_picture,
+                              size: 50,
+                            ),
+                          ),
                         ),
-                      ),
+                      ],
                     ),
-                  ],
-                ),
-              ),
-            )
-                : Column(
-              children: [
-                Stack(
+                  ),
+                )
+                    : Column(
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.only( right: 60 ,left: 30 ),
-                      child: Image(image: AssetImage("assets/images/imageProfile.png")),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 200 , right: 47, left: 15 ),
-                      child: MaterialButtonScreen(titleOfButton: "Select Image" ,
-                        colorOfButton: Colors.blue, widthOfButton: 350,
-                        onPressed:(){_pickImage(ImageSource.gallery);},
-                      ),
+                    Stack(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only( right: 60 ,left: 30 ),
+                          child: Image(image: AssetImage("assets/images/imageProfile.png")),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 200 , right: 47, left: 15 ),
+                          child: MaterialButtonScreen(titleOfButton: "Select Image".tr ,
+                            colorOfButton: Colors.blue, widthOfButton: 350,
+                            onPressed:(){_pickImage(ImageSource.gallery);},
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
-              ],
-            ),
 
-            // isRegistered ? Container(
+                // isRegistered ? Container(
                 //   width: 300,
                 //   height: 250,
                 //   child: Center(
@@ -125,7 +130,7 @@ class _userprofileState extends State<doctorDetailsOfProfile> {
                 TextFormFieldForProfile(
                   controller: usernameController,
                   keyboardType: TextInputType.name,
-                  label: " Your Full name",
+                  label: "Your Full name".tr,
                   // validator: (value) {
                   //   return
                   //     ValidatorScreen(value!, 2, 90, "usernameController");
@@ -135,7 +140,7 @@ class _userprofileState extends State<doctorDetailsOfProfile> {
                 TextFormFieldForProfile(
                   controller: _Location,
                   keyboardType: TextInputType.streetAddress,
-                  label: "Choose Your Location",
+                  label: "Choose Your Location".tr,
                   suffixIcon: Icons.add_location_alt,
                   // validator: (value) {
                   //   return
@@ -146,7 +151,7 @@ class _userprofileState extends State<doctorDetailsOfProfile> {
                 TextFormFieldForProfile(
                   controller: _Education,
                   keyboardType: TextInputType.name,
-                  label: "Your Education",
+                  label: "Your Education".tr,
                   // validator: (value) {
                   //   return
                   //     ValidatorScreen(value!, 2, 90, "usernameController");
@@ -156,9 +161,9 @@ class _userprofileState extends State<doctorDetailsOfProfile> {
                 SizedBox(height: 20,),
                 IntlPhoneField(
                   decoration: InputDecoration(
-                    labelStyle: TextStyle(fontSize: 22 , fontWeight: FontWeight.bold , color: Colors.black38), // جعل النص يظهر في أقصى اليسار
+                    labelStyle: Theme.of(context).textTheme.bodyText1,
 
-                    labelText: 'Your Phone Number',
+                    labelText: 'Your Phone Number'.tr,
                     border: OutlineInputBorder(
                       borderSide: BorderSide(),
                     ),
@@ -173,9 +178,9 @@ class _userprofileState extends State<doctorDetailsOfProfile> {
                 SizedBox(height: 4,),
                 IntlPhoneField(
                   decoration: InputDecoration(
-                    labelStyle: TextStyle(fontSize: 22 , fontWeight: FontWeight.bold , color: Colors.black38), // جعل النص يظهر في أقصى اليسار
+                    labelStyle: Theme.of(context).textTheme.bodyText1,  // جعل النص يظهر في أقصى اليسار
 
-                    labelText: 'Your Second Number (optional)',
+                    labelText: 'Your Second Number (optional)'.tr,
                     border: OutlineInputBorder(
                       borderSide: BorderSide(),
                     ),
@@ -192,10 +197,10 @@ class _userprofileState extends State<doctorDetailsOfProfile> {
                   maxLines: null, // يمكن للحقل أن يحتوي على عدة أسطر من النص
                   keyboardType: TextInputType.multiline, // يسمح بإدخال نص متعدد الأسطر
                   decoration: InputDecoration(
-                    labelStyle: TextStyle(fontSize: 22 , fontWeight: FontWeight.bold , color: Colors.black38), // جعل النص يظهر في أقصى اليسار
+                    labelStyle:Theme.of(context).textTheme.bodyText1,  // جعل النص يظهر في أقصى اليسار
 
                     contentPadding: EdgeInsets.all(50),
-                    label:Text('Write about your skills and Experience' ,overflow: TextOverflow.ellipsis ,),
+                    label:Text('Write about your skills and Experience'.tr ,overflow: TextOverflow.ellipsis ,),
                     border: OutlineInputBorder(), // إضافة حدود للحقل
 
                   ),
@@ -204,9 +209,9 @@ class _userprofileState extends State<doctorDetailsOfProfile> {
                 TextFormField(
                   decoration: InputDecoration(
 
-                    labelStyle: TextStyle(fontSize: 22 , fontWeight: FontWeight.bold , color: Colors.black38), // جعل النص يظهر في أقصى اليسار
+                    labelStyle: Theme.of(context).textTheme.bodyText1,  // جعل النص يظهر في أقصى اليسار
                     border: OutlineInputBorder(),
-                    labelText:selectedOption != null?selectedOption:"Choose Your Gender" ,
+                    labelText:selectedOption != null?selectedOption:"Choose Your Gender".tr ,
                     suffixIcon: DropdownButton<String>(
                       //   value: "choose Your ",
                       icon: Icon(Icons.keyboard_arrow_down ,size: 40),
@@ -215,7 +220,7 @@ class _userprofileState extends State<doctorDetailsOfProfile> {
                           selectedOption = newValue!;
                         });
                       },
-                      items: <String>['Male', 'Female']
+                      items: <String>['Male'.tr, 'Female'.tr]
                           .map<DropdownMenuItem<String>>((String value) {
                         return DropdownMenuItem<String>(
                           value: value,
@@ -232,8 +237,8 @@ class _userprofileState extends State<doctorDetailsOfProfile> {
                     text: _birthDate != null ? DateFormat('yyyy-MM-dd').format(_birthDate!) : '',
                   ),
                   decoration: InputDecoration(
-                      labelStyle: TextStyle(fontSize: 22 , fontWeight: FontWeight.bold , color: Colors.black38), // جعل النص يظهر في أقصى اليسار
-                      labelText: 'Your Birthday',
+                      labelStyle: Theme.of(context).textTheme.bodyText1,  // جعل النص يظهر في أقصى اليسار
+                      labelText: 'Your Birthday'.tr,
                       border: OutlineInputBorder(),
                       suffixIcon: Icon(Icons.date_range)
                   ),
@@ -257,16 +262,26 @@ class _userprofileState extends State<doctorDetailsOfProfile> {
                 TextFormFieldForProfile(
                   controller: _servant,
                   keyboardType: TextInputType.number,
-                  label: " The Servant Price :$price ",
+                  label: "The Servant Price :$price".tr,
                   suffixIcon: Icons.attach_money ,
                   // validator: (value) {
                   //   return
                   //     ValidatorScreen(value!, 2, 90, "usernameController");
                   // },
                 ),
+                SizedBox(height: 20),
+                MaterialButtonScreen(
+                  titleOfButton:"save Data".tr,
+                  widthOfButton: double.infinity,
+                  fontSize: 24,
+                  fontWeight: FontWeight.normal,
+                  colorOfButton: mainColor,
+                  onPressed: () {
+                   Get.to(Location());
+                    },),
+
                 SizedBox(height: 100),
 
-                MaterialButtonScreen(titleOfButton: "Save Data" , colorOfButton: Colors.blue),
 
               ],
             ),
