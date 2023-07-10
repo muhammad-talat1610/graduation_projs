@@ -4,24 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:graduation_project/widget/widgets%20screen%20(all%20widgets).dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:intl/intl.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:geolocator/geolocator.dart';
-import 'package:latlong2/latlong.dart';
-import 'package:geocoding/geocoding.dart';
-import 'package:permission_handler/permission_handler.dart';
 
 class doctorDetailsOfProfile extends StatefulWidget {
   State<doctorDetailsOfProfile> createState() => _userprofileState();
 }
 
 class _userprofileState extends State<doctorDetailsOfProfile> {
-  ShowPasswordClass controller = Get.put(ShowPasswordClass());
-  LatLng? selectedLocation;
   final bool isRegistered = false;
   DateTime? _birthDate;
-  final TextEditingController usernameController = TextEditingController();
   TextEditingController _priceController = TextEditingController();
   TextEditingController _Location = TextEditingController();
   TextEditingController _Education = TextEditingController();
@@ -29,6 +19,7 @@ class _userprofileState extends State<doctorDetailsOfProfile> {
   var dateController = TextEditingController();
 
   String price = '';
+  final TextEditingController usernameController = TextEditingController();
   String ?selectedOption ;
   DateTime _selectedValue = DateTime.now();
   Future<void> _pickImage(ImageSource source) async {
@@ -40,324 +31,244 @@ class _userprofileState extends State<doctorDetailsOfProfile> {
     }
   }
   File? _image;
-  Future<void> _getCurrentLocation() async {
-    // Get current location in Egypt
-    Position position = await Geolocator.getCurrentPosition(
-      desiredAccuracy: LocationAccuracy.high,
-      forceAndroidLocationManager: true,
-    );
 
-    // Get city name using Reverse Geocoding
-    List<Placemark> placemarks = await placemarkFromCoordinates(
-      position.latitude,
-      position.longitude,
-    );
-    String currentAddress = placemarks[0].thoroughfare ?? '';
-    String currentCity = placemarks[0].subAdministrativeArea ?? '';
-
-    // Set the current location in the text field
-    setState(() {
-      _Location.text = '$currentAddress, $currentCity';
-    });
-}
-
-  void requestLocationPermission() async {
-   PermissionStatus status = await Permission.location.request();
-    if (status.isGranted) {
-      _getCurrentLocation();
-    } else {
-      print('تم رفض إذن الوصول إلى الموقع');
-    }
-  }
-
-// مثال على كيفية استدعاء الدالة
   @override
-  void initState() {
-    super.initState();
-    requestLocationPermission();
-  }
-
-
-
-    @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Container(
-          child: SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0),
-              child: Column(
-                children: [
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            child: Column(
+              children: [
 
-                  SizedBox(height: 50.0,),
-
-                  Stack(
-                    children: [
-                      if (_image != null)
-                        Image.file(
-                          _image!,fit: BoxFit.cover,
-                          height: 220,
-                          width: 280
-                        ),
-                      if (_image == null)
-                        Image.asset(
-                          "assets/images/imageProfile.png",
-                          height: 200,
-                        ),
-                      Positioned(
-                        top: 160, right: 50,
-                        child: ElevatedButton( child: Text("choose Image"),
-                          onPressed: () => _pickImage(ImageSource.gallery),
-                          // icon: Icon(
-                          //   Icons.picture_in_picture,
-                          //   size: 50,
-                          // ),
-                        ),
+                SizedBox(height: 50.0,),
+            isRegistered
+                ? Container(
+              width: 300,
+              height: 250,
+              child: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    if (_image != null)
+                      Image.file(
+                        _image!,
+                        height: 200,
                       ),
-                    ],
-                  ),
-                  // isRegistered
-                  //     ? _image != null
-                  //     ? Container(
-                  //   width: 300,
-                  //   height: 250,
-                  //   child: Center(
-                  //     child: Column(
-                  //       mainAxisAlignment: MainAxisAlignment.center,
-                  //       children: [
-                  //         Image.file(
-                  //           _image!,
-                  //           height: 200,
-                  //         ),
-                  //         SizedBox(height: 5),
-                  //         Padding(
-                  //           padding: const EdgeInsets.only(left: 50.0, bottom: 50),
-                  //           child: IconButton(
-                  //             onPressed: () => _pickImage(ImageSource.gallery),
-                  //             icon: Icon(
-                  //               Icons.picture_in_picture,
-                  //               size: 50,
-                  //             ),
-                  //           ),
-                  //         ),
-                  //       ],
-                  //     ),
-                  //   ),
-                  // )
-                  //     : Column(
-                  //   children: [
-                  //     Stack(
-                  //       children: [
-                  //         Padding(
-                  //           padding: const EdgeInsets.only(right: 60, left: 30),
-                  //           child: Image(image: AssetImage("assets/images/imageProfile.png")),
-                  //         ),
-                  //         Padding(
-                  //           padding: const EdgeInsets.only(top: 200, right: 47, left: 15),
-                  //           child: MaterialButtonScreen(
-                  //             titleOfButton: "Select Image",
-                  //             colorOfButton: Colors.blue,
-                  //             widthOfButton: 350,
-                  //             onPressed: () {
-                  //               _pickImage(ImageSource.gallery);
-                  //             },
-                  //           ),
-                  //         ),
-                  //       ],
-                  //     ),
-                  //   ],
-                  // )
-                  //     : Column(
-                  //   children: [
-                  //     Stack(
-                  //       children: [
-                  //         Padding(
-                  //           padding: const EdgeInsets.only(right: 60, left: 30),
-                  //           child: Image(image: AssetImage("assets/images/imageProfile.png")),
-                  //         ),
-                  //         Padding(
-                  //           padding: const EdgeInsets.only(top: 200, right: 47, left: 15),
-                  //           child: MaterialButtonScreen(
-                  //             titleOfButton: "Select Image",
-                  //             colorOfButton: Colors.blue,
-                  //             widthOfButton: 350,
-                  //             onPressed: () {
-                  //               _pickImage(ImageSource.gallery);
-                  //             },
-                  //           ),
-                  //         ),
-                  //       ],
-                  //     ),
-                  //   ],
-                  // ),
-
-                  SizedBox(height: 30,),
-
-                  TextFormFieldScreen(
-                    controller: usernameController,
-                    keyboardType: TextInputType.name,
-                    label: "Enter Your name".tr,
-                    prefix: Icons.email,
-                    validator: (value) {
-                      return ValidatorScreen(value!, 2, 90, "usernameController");
-                    },),
-                  SizedBox(height: 10),
-                  TextFormField(
-                    controller: _Location,
-                    keyboardType: TextInputType.streetAddress,
-                    decoration: InputDecoration(
-                      labelText: 'Choose Your Location',
-                      suffixIcon: IconButton(
-                        icon: Icon(Icons.add_location_alt),
-                        onPressed: _getCurrentLocation,
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 10),
-                  TextFormFieldForProfile(
-                    controller: _Education,
-                    keyboardType: TextInputType.name,
-                    label: "Your Education".tr,
-                    // validator: (value) {
-                    //   return
-                    //     ValidatorScreen(value!, 2, 90, "usernameController");
-                    // },
-                  ),
-
-                  SizedBox(height: 20,),
-                  Container(      margin: EdgeInsets.only(top: 10 ,right: 8 , left: 8),
-
-                    child: IntlPhoneField(
-                      decoration: InputDecoration(
-                        labelStyle: TextStyle(fontSize: 16 , fontWeight: FontWeight.bold , color: Colors.black38), // جعل النص يظهر في أقصى اليسار
-
-                        labelText: 'Your Phone Number'.tr,
-                        border: OutlineInputBorder(
-                          borderSide: BorderSide(),
-                        ),
-                      ),
-                      onChanged: (phone) {
-                        print(phone.completeNumber);
-                      },
-                      onCountryChanged: (country) {
-                        print('Country changed to: ' + country.name);
-                      },
-                    ),
-                  ),
-                  SizedBox(height: 4,),
-                  Container(      margin: EdgeInsets.only(top: 10 ,right: 8 , left: 8),
-
-                    child: IntlPhoneField(
-                      decoration: InputDecoration(
-                        labelStyle: TextStyle(fontSize: 16 , fontWeight: FontWeight.bold , color: Colors.black38), // جعل النص يظهر في أقصى اليسار
-
-                        labelText: 'Your Second Number (optional)'.tr,
-                        border: OutlineInputBorder(
-                          borderSide: BorderSide(),
-                        ),
-                      ),
-                      onChanged: (phone) {
-                        print(phone.completeNumber);
-                      },
-                      onCountryChanged: (country) {
-                        print('Country changed to: ' + country.name);
-                      },
-                    ),
-                  ),
-                  SizedBox(height: 4),
-                  Container(      margin: EdgeInsets.only(top: 10 ,right: 8 , left: 8),
-
-                    child: TextField(
-                      maxLines: null, // يمكن للحقل أن يحتوي على عدة أسطر من النص
-                      keyboardType: TextInputType.multiline, // يسمح بإدخال نص متعدد الأسطر
-                      decoration: InputDecoration(
-                        labelStyle: TextStyle(fontSize: 16 , fontWeight: FontWeight.bold , color: Colors.black38), // جعل النص يظهر في أقصى اليسار
-
-                        contentPadding: EdgeInsets.all(50),
-                        label:Text('Write about your skills and Experience'.tr ,overflow: TextOverflow.ellipsis ,),
-                        border: OutlineInputBorder(), // إضافة حدود للحقل
-
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 20,),
-                  Container(      margin: EdgeInsets.only(top: 10 ,right: 8 , left: 8),
-
-                    child: TextFormField(
-                      decoration: InputDecoration(
-
-                        labelStyle: TextStyle(fontSize: 16 , fontWeight: FontWeight.bold , color: Colors.black38), // جعل النص يظهر في أقصى اليسار
-                        border: OutlineInputBorder(),
-                        labelText:selectedOption != null?
-                        selectedOption:"Choose Your Gender".tr ,
-                        suffixIcon: DropdownButton<String>(
-                          //   value: "choose Your ",
-                          icon: Icon(Icons.keyboard_arrow_down ,size: 40),
-                          onChanged:( newValue) {
-                            setState(() {
-                              selectedOption = newValue!;
-                            });
-                          },
-                          items: <String>['Male'.tr, 'Female'.tr]
-                              .map<DropdownMenuItem<String>>((String value) {
-                            return DropdownMenuItem<String>(
-                              value: value,
-                              child: Text(value),
-                            );
-                          }).toList(),
+                    SizedBox(height: 5),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 50.0, bottom: 50),
+                      child: IconButton(
+                        onPressed: () => _pickImage(ImageSource.gallery),
+                        icon: Icon(
+                          Icons.picture_in_picture,
+                          size: 50,
                         ),
                       ),
                     ),
-                  ),
-                  SizedBox(height: 20,),
-                  Container(      margin: EdgeInsets.only(top: 10 ,right: 8 , left: 8),
-
-                    child: TextFormField(
-                      readOnly: true,
-                      controller: TextEditingController(
-                        text: _birthDate != null ? DateFormat('yyyy-MM-dd').format(_birthDate!) : '',
-                      ),
-                      decoration: InputDecoration(
-
-                          labelStyle: TextStyle(fontSize: 16 , fontWeight: FontWeight.bold , color: Colors.black38), // جعل النص يظهر في أقصى اليسار
-                          labelText: 'Your Birthday'.tr,
-                          border: OutlineInputBorder(),
-                          suffixIcon: Icon(Icons.date_range)
-                      ),
-                      onTap: () async {
-                        final selectedDate = await showDatePicker(
-                          context: context,
-                          initialDate: _birthDate ?? DateTime.now(),
-                          firstDate: DateTime(1900),
-                          lastDate: DateTime.now(),
-                        );
-                        if (selectedDate != null) {
-                          setState(() {
-                            _birthDate = selectedDate;
-                          });
-                        }
-                      },
-
-                    ),
-                  ),
-                  SizedBox(height: 20,),
-
-                  TextFormFieldForProfile(
-                    controller: _servant,
-                    keyboardType: TextInputType.number,
-                    label: " The Servant Price :$price".tr,
-                    suffixIcon: Icons.attach_money ,
-                    // validator: (value) {
-                    //   return
-                    //     ValidatorScreen(value!, 2, 90, "usernameController");
-                    // },
-                  ),
-                  SizedBox(height: 100),
-
-                  MaterialButtonScreen(titleOfButton: "Save Data" , colorOfButton: Colors.blue),
-
-                ],
+                  ],
+                ),
               ),
+            )
+                : Column(
+              children: [
+                Stack(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only( right: 60 ,left: 30 ),
+                      child: Image(image: AssetImage("assets/images/imageProfile.png")),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 200 , right: 47, left: 15 ),
+                      child: MaterialButtonScreen(titleOfButton: "Select Image" ,
+                        colorOfButton: Colors.blue, widthOfButton: 350,
+                        onPressed:(){_pickImage(ImageSource.gallery);},
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+
+            // isRegistered ? Container(
+                //   width: 300,
+                //   height: 250,
+                //   child: Center(
+                //     child: Column(
+                //       mainAxisAlignment: MainAxisAlignment.center,
+                //       children: [
+                //         if (_image != null)
+                //           Image.file(
+                //             _image!,
+                //             height: 200,
+                //           ),
+                //        SizedBox(height: 5),
+                //        Padding(
+                //          padding: const EdgeInsets.only(left: 10.0 , bottom: 50),
+                //          child: IconButton(
+                //             onPressed: () => _pickImage(ImageSource.gallery),
+                //             icon: Icon(Icons.picture_in_picture ,size: 50,),
+                //       //    child: Text('Pick Image'),
+                //           ),
+                //        ),
+                //       ],
+                //     ),
+                //   ),
+                // )
+                // : Container(
+                //   width: double.infinity,
+                //   height: double.infinity,
+                //   color: Colors.green,
+                // ),
+                SizedBox(height: 30,),
+
+                TextFormFieldForProfile(
+                  controller: usernameController,
+                  keyboardType: TextInputType.name,
+                  label: " Your Full name",
+                  // validator: (value) {
+                  //   return
+                  //     ValidatorScreen(value!, 2, 90, "usernameController");
+                  // },
+                ),
+                SizedBox(height: 10),
+                TextFormFieldForProfile(
+                  controller: _Location,
+                  keyboardType: TextInputType.streetAddress,
+                  label: "Choose Your Location",
+                  suffixIcon: Icons.add_location_alt,
+                  // validator: (value) {
+                  //   return
+                  //     ValidatorScreen(value!, 2, 90, "usernameController");
+                  // },
+                ),
+                SizedBox(height: 10),
+                TextFormFieldForProfile(
+                  controller: _Education,
+                  keyboardType: TextInputType.name,
+                  label: "Your Education",
+                  // validator: (value) {
+                  //   return
+                  //     ValidatorScreen(value!, 2, 90, "usernameController");
+                  // },
+                ),
+
+                SizedBox(height: 20,),
+                IntlPhoneField(
+                  decoration: InputDecoration(
+                    labelStyle: TextStyle(fontSize: 22 , fontWeight: FontWeight.bold , color: Colors.black38), // جعل النص يظهر في أقصى اليسار
+
+                    labelText: 'Your Phone Number',
+                    border: OutlineInputBorder(
+                      borderSide: BorderSide(),
+                    ),
+                  ),
+                  onChanged: (phone) {
+                    print(phone.completeNumber);
+                  },
+                  onCountryChanged: (country) {
+                    print('Country changed to: ' + country.name);
+                  },
+                ),
+                SizedBox(height: 4,),
+                IntlPhoneField(
+                  decoration: InputDecoration(
+                    labelStyle: TextStyle(fontSize: 22 , fontWeight: FontWeight.bold , color: Colors.black38), // جعل النص يظهر في أقصى اليسار
+
+                    labelText: 'Your Second Number (optional)',
+                    border: OutlineInputBorder(
+                      borderSide: BorderSide(),
+                    ),
+                  ),
+                  onChanged: (phone) {
+                    print(phone.completeNumber);
+                  },
+                  onCountryChanged: (country) {
+                    print('Country changed to: ' + country.name);
+                  },
+                ),
+                SizedBox(height: 4),
+                TextField(
+                  maxLines: null, // يمكن للحقل أن يحتوي على عدة أسطر من النص
+                  keyboardType: TextInputType.multiline, // يسمح بإدخال نص متعدد الأسطر
+                  decoration: InputDecoration(
+                    labelStyle: TextStyle(fontSize: 22 , fontWeight: FontWeight.bold , color: Colors.black38), // جعل النص يظهر في أقصى اليسار
+
+                    contentPadding: EdgeInsets.all(50),
+                    label:Text('Write about your skills and Experience' ,overflow: TextOverflow.ellipsis ,),
+                    border: OutlineInputBorder(), // إضافة حدود للحقل
+
+                  ),
+                ),
+                SizedBox(height: 20,),
+                TextFormField(
+                  decoration: InputDecoration(
+
+                    labelStyle: TextStyle(fontSize: 22 , fontWeight: FontWeight.bold , color: Colors.black38), // جعل النص يظهر في أقصى اليسار
+                    border: OutlineInputBorder(),
+                    labelText:selectedOption != null?selectedOption:"Choose Your Gender" ,
+                    suffixIcon: DropdownButton<String>(
+                      //   value: "choose Your ",
+                      icon: Icon(Icons.keyboard_arrow_down ,size: 40),
+                      onChanged:( newValue) {
+                        setState(() {
+                          selectedOption = newValue!;
+                        });
+                      },
+                      items: <String>['Male', 'Female']
+                          .map<DropdownMenuItem<String>>((String value) {
+                        return DropdownMenuItem<String>(
+                          value: value,
+                          child: Text(value),
+                        );
+                      }).toList(),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 20,),
+                TextFormField(
+                  readOnly: true,
+                  controller: TextEditingController(
+                    text: _birthDate != null ? DateFormat('yyyy-MM-dd').format(_birthDate!) : '',
+                  ),
+                  decoration: InputDecoration(
+                      labelStyle: TextStyle(fontSize: 22 , fontWeight: FontWeight.bold , color: Colors.black38), // جعل النص يظهر في أقصى اليسار
+                      labelText: 'Your Birthday',
+                      border: OutlineInputBorder(),
+                      suffixIcon: Icon(Icons.date_range)
+                  ),
+                  onTap: () async {
+                    final selectedDate = await showDatePicker(
+                      context: context,
+                      initialDate: _birthDate ?? DateTime.now(),
+                      firstDate: DateTime(1900),
+                      lastDate: DateTime.now(),
+                    );
+                    if (selectedDate != null) {
+                      setState(() {
+                        _birthDate = selectedDate;
+                      });
+                    }
+                  },
+
+                ),
+                SizedBox(height: 20,),
+
+                TextFormFieldForProfile(
+                  controller: _servant,
+                  keyboardType: TextInputType.number,
+                  label: " The Servant Price :$price ",
+                  suffixIcon: Icons.attach_money ,
+                  // validator: (value) {
+                  //   return
+                  //     ValidatorScreen(value!, 2, 90, "usernameController");
+                  // },
+                ),
+                SizedBox(height: 100),
+
+                MaterialButtonScreen(titleOfButton: "Save Data" , colorOfButton: Colors.blue),
+
+              ],
             ),
           ),
         )
@@ -397,7 +308,7 @@ class TextFormFieldForProfile extends StatelessWidget {
 
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 10 ,right: 8 , left: 8),
+      // margin: EdgeInsets.only(top: 10),
       child: TextFormField(
         controller: controller,
         keyboardType: keyboardType,
@@ -407,9 +318,8 @@ class TextFormFieldForProfile extends StatelessWidget {
             borderRadius: BorderRadius.all(Radius.circular(0)),
           ),
           contentPadding: EdgeInsets.symmetric(horizontal: 2),
-
           labelText: label ,
-          labelStyle: TextStyle(fontSize: 16 , fontWeight: FontWeight.bold , color: Colors.black38), // جعل النص يظهر في أقصى اليسار
+          labelStyle:Theme.of(context).textTheme.bodyText1, // جعل النص يظهر في أقصى اليسار
           suffixIcon: IconButton(
             onPressed: onPressed,
             icon: Icon(suffixIcon),
@@ -420,33 +330,5 @@ class TextFormFieldForProfile extends StatelessWidget {
       ),
     );
   }
-  Future<LatLng?> getLocation() async {
-    bool serviceEnabled;
-    LocationPermission permission;
-
-    // التحقق من تفعيل خدمة الموقع والحصول على إذن الموقع
-    serviceEnabled = await Geolocator.isLocationServiceEnabled();
-    if (!serviceEnabled) {
-      return null;
-    }
-
-    permission = await Geolocator.checkPermission();
-    if (permission == LocationPermission.deniedForever) {
-      return null;
-    }
-
-    if (permission == LocationPermission.denied) {
-      permission = await Geolocator.requestPermission();
-      if (permission != LocationPermission.whileInUse && permission != LocationPermission.always) {
-        return null;
-      }
-    }
-
-    // الحصول على الموقع الحالي
-    Position position = await Geolocator.getCurrentPosition();
-    return LatLng(position.latitude, position.longitude);
-  }
-
 
 }
-

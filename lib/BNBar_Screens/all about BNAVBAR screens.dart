@@ -16,8 +16,10 @@ import '../services/colors.dart';
 
 
 List screens = [
-  homeScreen(),
-  serviceScreen(),
+ 
+  
+   homeScreen(),
+   serviceScreen(),
   doctorDetailsOfProfile(),
   settingsDetailsScreen(),
 ];
@@ -35,9 +37,16 @@ class BNAVBAR extends StatelessWidget {
         extendBody: true,
         appBar: PreferredSize(
           child: AppBar(
-            backgroundColor: mainColor,
-            leading:   Row(
-              children: [SizedBox(width: 10,),
+            backgroundColor:  Theme.of(context).appBarTheme.backgroundColor,
+            title: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Image(
+                  image: AssetImage("assets/images/logoWhite.png"),
+                  height: 60,
+                  color: Colors.grey[300],
+                ),
+                Spacer(),
 
                 if (isRegistered == false)
                   Stack( fit: StackFit.passthrough,
@@ -55,15 +64,6 @@ class BNAVBAR extends StatelessWidget {
                   ),
               ],
             ),
-            title: Center(
-              child: Image(
-                image: AssetImage("assets/images/logoWhite.png"),
-                height: 60,
-                color: Colors.grey[300],
-              ),
-            ),
-
-
           ),
           preferredSize: Size.fromHeight(70),
         ),
@@ -72,33 +72,39 @@ class BNAVBAR extends StatelessWidget {
         // appBar:
 
        body: screens[controller.selectedIndex],
-        bottomNavigationBar: BottomNavigationBar(
+        bottomNavigationBar:  bnavbar (controller)    );
+    });
+  }
+  
+  Widget bnavbar(controller){
+    return
+    BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
 
             backgroundColor: mainColor,
             selectedItemColor: Colors.black,
              unselectedItemColor: grayColor,
+             
             // unselectedLabelStyle: TextStyle(color:grayColor),
             // showUnselectedLabels: true,
-             unselectedIconTheme: IconThemeData(color: grayColor ,opacity: 1 ,),
-             selectedIconTheme: IconThemeData(color: Colors.black,),
+            //  unselectedIconTheme: IconThemeData(color: grayColor ,opacity: 1 ,),
+            //  selectedIconTheme: IconThemeData(color: Colors.black,),
              currentIndex: controller.selectedIndex,
             onTap: controller.onItemTapped,
 
             items: [
 
               BottomNavigationBarItem(
-                icon: Icon(Icons.home, size: 35 , color: grayColor,), label: 'home'.tr),
+                icon: Icon(Icons.home, size: 35 , ), label: 'home'),
               BottomNavigationBarItem(
-                  icon: Icon(Icons.medical_services, size: 33 ,color: grayColor,), label: 'Services'.tr),
+                  icon: Icon(Icons.medical_services, size: 33 ,), label: 'Services'),
               BottomNavigationBarItem(
-                 icon: Icon(Icons.flash_on, size: 33, color: grayColor,), label: 'personal Page'.tr),
+                 icon: Icon(Icons.flash_on, size: 33,), label: 'Activity'),
               BottomNavigationBarItem(
-                  icon: Icon(Icons.arrow_circle_down_rounded, size: 33, color: grayColor,), label: 'About'.tr),
+                  icon: Icon(Icons.arrow_circle_down_rounded, size: 33, ), label: 'About'),
 
-            ] ,),
-      );
-    });
+            ] ,);
+
   }
 }
 

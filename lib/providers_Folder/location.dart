@@ -6,102 +6,88 @@ import '../BNBar_Screens/Services_App_Screen/priceOfServent.dart';
 import '../Doctor details.dart';
 import '../providers_Folder/controller.dart';
 import '../services/colors.dart';
-
-late dynamic index; // Declare index variable of type int
+import 'package:graduation_project/BNBar_Screens/all about BNAVBAR screens.dart';
 
 class Location extends StatelessWidget {
-  final getxController controller = Get.put(getxController());
+  
+  getxController controller = Get.put(getxController());
+  
 
   Widget build(BuildContext context) {
-    return GetBuilder<getxController>(builder: (controller) {
-      return Scaffold(
-            body: SingleChildScrollView(
-              child: Column(
-                children: [
-                  SizedBox(
-                    height: 30,
-                  ),
-                  Container(
-                    height: 160,
-                    width: double.infinity,
-                    child: Column(
-                      children: [
-                        Row(
-                          children: [
-                            Expanded(
-                              child: Column(
-                                children: [
-                                  myInkwell("All".tr, () {
-                                    controller.getAll();
-                                  }),
-                                  myInkwell("Location".tr, () {
-                                    controller.getLoc();
-                                  }),
-
-                                ],
-                              ),
-                            ),
-                            Expanded(
-                              child: Column(
-                                children: [
-
-                                      myInkwell("Price".tr, () {
-                                        controller.lowestPrice();
-                                      }),
-                                      myInkwell("Active".tr, () {
-                                        controller.getActive();
-                                      })
-                                ],
-                              ),
-                            ),
-                            Expanded(
-                              child: Column(
-                                children: [
-                                  myInkwell("Male".tr, () {
-                                    controller.getMale();
-                                  }),
-                                  myInkwell("Female".tr, () {
-                                    controller.getFemale();
-                                  }),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
- //filters
-                  SizedBox(height: 15,),
-                  Center(
-                    child: Container(
-                      height: 600,
-                      child: ListView.builder(
-                        scrollDirection: Axis.vertical,
-                        itemCount: controller.data.length,
-                        itemBuilder: (context, i) {
-                          index = i; // Assign the current index value to index variable
-                          return Container(
-                            child: detailsOfPersona(context ,
-                                controller.data[i]["image"],
-                              controller.data[i]["name"],
-                              controller.data[i]["adress"],
-                              controller.data[i]["price"].toString(),
-                              controller.data[i]["rate"].toString(),
-                              i ,
-
-                            ),
-                          );
-                        },
+    
+    return GetBuilder<getxController>(
+      builder: (controller) {
+        return Scaffold(
+          
+          body: 
+          
+          Column(
+                    children: [
+                      SizedBox(height: 40,),
+                      Padding(
+                           padding: EdgeInsets.fromLTRB(8, 0,0,0),child: 
+                      Row(
+                        children: [
+                          SizedBox(
+                            width: 10,
+                          ),
+                          myInkwell("All", () {
+                            controller.getAll();
+                          }),
+                          myInkwell("Male", () {
+                            controller.getMale();
+                          }),
+                          myInkwell("Female", () {
+                            controller.getFemale();
+                          }),
+                        ],
                       ),
-                    ),
-                  ),
-                SizedBox(height: 500,)],
-              ),
-            ),
-          );
-        },
+                      ),Padding(
+                        padding: EdgeInsets.fromLTRB(8, 0,0,0),
+                        child: 
+                      Row(
+                        children: [
+                          SizedBox(
+                            width: 10,
+                          ),
+                          myInkwell("Location", () {
+                            controller.getLoc();
+                          }),
+                          myInkwell("Price", () {
+                            controller.lowestPrice();
+                          }),
+                          myInkwell("Active", () {
+                            controller.getActive();
+                          }),
+                        ],
+                      ),
+                      ),
 
+              Center(
+                child: Container(
+                  height: 600,
+                  child: ListView.builder(
+                    scrollDirection: Axis.vertical,
+                    itemCount: controller.data.length,
+                    itemBuilder: (context, i) {
+                      return Container(
+                        child: detailsOfPersona(
+                          context,
+                          controller.data[i]["image"],
+                          controller.data[i]["name"],
+                          controller.data[i]["adress"],
+                          controller.data[i]["price"].toString(),
+                          controller.data[i]["rate"].toString(),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 
@@ -113,9 +99,9 @@ class Location extends StatelessWidget {
       child: Container(
           child: Center(
               child: Text(
-                text,
-                style: TextStyle(color: Colors.grey[200], fontSize: 20),
-              )),
+            text,
+            style: TextStyle(color: Colors.grey[200], fontSize: 20),
+          )),
           width: 100.0,
           height: 50,
           margin: EdgeInsets.all(10),
@@ -128,35 +114,46 @@ class Location extends StatelessWidget {
 }
 
 Widget detailsOfPersona(
-    BuildContext context,
-    String image,
-    String name,
-    String location,
-    String price,
-    String rate,
-    int index,
-    ) {
-  //final personData = controller.data[index]; // Retrieve personData using index
-  return  Padding(
-    padding: const EdgeInsets.all(5.0),
+  BuildContext context,
+  String image,
+  String name,
+  String location,
+  String price,
+  String rate,
+) {
+  final isDark=Theme.of(context).brightness==Brightness.dark;
+    dynamic cardcolor=isDark?Color(0x333739):grayColor;
+  return Padding(
+    padding: const EdgeInsets.all(8.0),
     child: Column(
       children: [
         Container(
-         // height: 500,
+          height: 500,
           decoration: BoxDecoration(
             gradient: SweepGradient(
               center: Alignment.centerLeft,
-              colors: [grayColor!, mainColor],
+              colors: [cardcolor, mainColor],
             ),
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.all(Radius.circular(10)),
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(height: 140),
+              SizedBox(
+                height: 140,
+              ),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
+                  // IconButton(
+                  //   onPressed: () {
+                  //     // setState(() {
+                  //     //   currentIndex = currentIndex == 0 ? 3 : currentIndex - 1;
+                  //     // });
+                  //   },
+
+                  //   icon: Icon(Icons.arrow_back_ios, size: 50,color: mainColor)
+                  //   ),
                   Spacer(),
                   Center(
                     child: Stack(
@@ -172,47 +169,54 @@ Widget detailsOfPersona(
                     ),
                   ),
                   Spacer(),
+                  // IconButton(
+                  //   onPressed: () {
+                  //     // setState(() {
+                  //     //   currentIndex = currentIndex == 3 ? 0 : currentIndex + 1;
+                  //     // });
+                  //   },
+                  //   icon: Icon(Icons.arrow_forward_ios, size: 50,color: mainColor,),
+
+                  // ),
                 ],
               ),
               Column(
                 children: [
                   Text(
-                    name,
+                    (name),
                     style: TextStyle(
-                      fontSize: 20,
+                      fontSize: 30,
                       fontWeight: FontWeight.bold,
                       color: mainColor,
                     ),
                   ),
                   SizedBox(height: 7),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.start, crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
-                        "Location : ".tr,
-                        style: TextStyle(
-                          fontSize: 17,
-                          color: mainColor,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Expanded(
-                        child: Column(
-                          children: [
-                            Text(
-                              "${location}",
-                               textAlign: TextAlign.center,
-                              // maxLines: 2, overflow: TextOverflow.ellipsis,
-                              style: TextStyle(
-                                fontSize: 14,
-                                color: mainColor,
-                                fontWeight: FontWeight.bold,
-                              ),
+                      Row(
+                        children: [
+                          Text(
+                            "Adress :",
+                            style: TextStyle(
+                              fontSize: 18,
+                              color: mainColor,
+                              fontWeight: FontWeight.bold,
                             ),
-                          ],
-                        ),
+                          ),
+                          Text(
+                            "$location",
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: mainColor,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
                       ),
-                      SizedBox(width: 5),
+                      SizedBox(
+                        width: 5,
+                      ),
                       Icon(Icons.location_history),
                     ],
                   ),
@@ -221,15 +225,7 @@ Widget detailsOfPersona(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        "Price : ".tr,
-                        style: TextStyle(
-                          fontSize: 18,
-                          color: mainColor,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Text(
-                        "${price}",
+                        "Price :$price",
                         style: TextStyle(
                           fontSize: 18,
                           color: mainColor,
@@ -244,15 +240,7 @@ Widget detailsOfPersona(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        "Rate : ".tr,
-                        style: TextStyle(
-                          fontSize: 18,
-                          color: mainColor,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Text(
-                        "${rate}",
+                        "Rate :$rate",
                         style: TextStyle(
                           fontSize: 18,
                           color: mainColor,
@@ -262,7 +250,9 @@ Widget detailsOfPersona(
                       Icon(Icons.star),
                     ],
                   ),
-                  SizedBox(height: 20),
+                  SizedBox(
+                    height: 20,
+                  ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16.0),
                     child: Row(
@@ -275,14 +265,19 @@ Widget detailsOfPersona(
                           height: 40,
                           width: 150,
                           child: MaterialButton(
-                            onPressed: () {Get.to(DoctorProfilePage());},
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          DoctorProfilePage()));
+                            },
                             child: Text(
-                              "show more".tr,
+                              "show more",
                               style: TextStyle(
-                                color: grayColor,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20,
-                              ),
+                                  color: grayColor,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 22),
                             ),
                           ),
                         ),
@@ -295,33 +290,29 @@ Widget detailsOfPersona(
                           height: 40,
                           width: 150,
                           child: MaterialButton(
-                            onPressed: () {
-                              Get.to(priceOfServant());
-                            },
-                            child: Text(
-                              "order".tr,
-                              style: TextStyle(
-                                color: grayColor,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 22,
-                              ),
-                            ),
-                          ),
+                              onPressed: () {
+                                Get.to(priceOfServant());
+                              },
+                              child: Text(
+                                "order",
+                                style: TextStyle(
+                                    color: grayColor,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 22),
+                              )),
                         ),
-SizedBox(height: 80,)
+                        SizedBox(
+                          width: 10,
+                        ),
                       ],
                     ),
                   ),
-
                 ],
               ),
             ],
           ),
         ),
-        SizedBox(height: 5,)
       ],
     ),
   );
-
 }
-

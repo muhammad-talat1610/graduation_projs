@@ -30,15 +30,15 @@ class _resetPasswordState extends State<resetPassword> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   SizedBox(height: 50.0,) ,
-   WelcomeMessageInRegisterScreen(mainTitle: "Reset Password".tr ,
-       welcomeMessage: "New Password ".tr  ,detailTitle: "Please Enter a New Password".tr),
+   WelcomeMessageInRegisterScreen(mainTitle: "Reset Password" ,
+       welcomeMessage: "New Password "  ,detailTitle: "Please Enter a New Password"),
                   SizedBox(height: 30.0,) ,
                   GetBuilder<ShowPasswordClass>(builder: (controller) {
                     return TextFormFieldScreen(
                         obsureText: controller.isshowPassword,
                         controller: PasswordController1,
                         keyboardType: TextInputType.name,
-                        label: "Enter New Password".tr,
+                        label: "Enter New Password",
                         prefix: Icons.lock,
                         validator: (value) {
                           return ValidatorScreen(value!, 5, 90, "password");
@@ -54,7 +54,7 @@ class _resetPasswordState extends State<resetPassword> {
                         obsureText: controller.isshowPassword,
                         controller: PasswordController2,
                         keyboardType: TextInputType.name,
-                        label: "Re Enter New Password".tr,
+                        label: "Re Enter New Password",
                         prefix: Icons.lock,
                         validator: (value) {
                           if (value != PasswordController1.text) {

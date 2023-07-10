@@ -9,19 +9,17 @@ class getxController extends GetxController{
   // isshowPassword = isshowPassword == true ? false : true;
 isshowPassword!= isshowPassword;
   update(); }
+
   int selectedIndex = 0; //New
   void onItemTapped(int index) {
       selectedIndex = index;
   update();
   }
- bool darkMode = false ;
- void isDark(){
-   darkMode =! darkMode ;
-   update();
- }
+
  late List data = [];
  double lat = 0;
  double lang = 0;
+
  Future<void> getAll() async {
    if (data.isNotEmpty) data.clear();
 
@@ -31,6 +29,7 @@ isshowPassword!= isshowPassword;
      data.add(doc.data());
      update();   });
  }
+
  Future<void> highestSpeed() async {
    if (data.isNotEmpty) {
      data.clear();
@@ -44,6 +43,7 @@ isshowPassword!= isshowPassword;
      data.add(doc.data());
      update();   });
  }
+
  Future<void> lowestPrice() async {
    if (data.isNotEmpty) {
      data.clear();
@@ -57,6 +57,7 @@ isshowPassword!= isshowPassword;
      data.add(doc.data());
      update();   });
  }
+
  Future<void> getMale() async {
    if (data.isNotEmpty) {
      data.clear();
@@ -166,5 +167,3 @@ isshowPassword!= isshowPassword;
  }
 }
  getxController controller = Get.put(getxController());
- final FController = Get.find<getxController>();
-
