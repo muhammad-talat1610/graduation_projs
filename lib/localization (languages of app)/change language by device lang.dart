@@ -9,6 +9,7 @@ class  mylocale implements Translations {
       "home": "الصفحة الرئيسية",
       "Services": "الخدمات",
       "personal Page": "الصفحة الشخصية",
+      'mode':'الوضع',
       "About": "الخصائص",
       "Love Your Soul": "اعتني بنفسك",
       "we pour love and care in every patient": "نحن نبذل الجهد والرعاية لكل المرضي ",
@@ -160,7 +161,7 @@ class  mylocale implements Translations {
       "Location :": "Location :",
       "Price :":"Price :",
       "Rate :" :  "Rate :",
-
+'mode':'mode',
 
 
 
