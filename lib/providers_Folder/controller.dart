@@ -1,10 +1,11 @@
- import 'package:get/get.dart';
+import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
- import 'package:cloud_firestore/cloud_firestore.dart';
- import 'package:geolocator/geolocator.dart';
-
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:geocoding/geocoding.dart';
 class getxController extends GetxController{
  bool isshowPassword=true ;
+ String locationField="";
  showPassword(){
   // isshowPassword = isshowPassword == true ? false : true;
 isshowPassword!= isshowPassword;
@@ -164,6 +165,32 @@ isshowPassword!= isshowPassword;
    });
    return distances;
  }
+ Future<String> getAddressFromLatLng() async {
+   final List<Placemark> placemarks =
+   await placemarkFromCoordinates(lat, lang);
+   if (placemarks != null && placemarks.isNotEmpty) {
+     final Placemark pos = placemarks[0];
+     return ' ${pos.subThoroughfare} ${pos.thoroughfare}, ${pos.locality}, ${pos.subAdministrativeArea} , ${pos.administrativeArea},${pos.country}';
+
+
+
+   }
+   return "";
+ }
+ Future<void> getAddress()async{
+   getLocation().then((_) async {
+
+     locationField= await getAddressFromLatLng();
+
+   }
+
+   );
+
+
+
+
+ }
+
 }
  getxController controller = Get.put(getxController());
  final FController = Get.find<getxController>();

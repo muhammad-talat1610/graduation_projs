@@ -18,6 +18,7 @@ class SignUpAsNurse extends StatefulWidget {
 
 class _RegisterScreenState extends State<SignUpAsNurse> {
   var FormKeySignUp = GlobalKey<FormState>();
+  final FormKey = GlobalKey<FormState>();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController usernameController = TextEditingController();
   final TextEditingController passwordController1 = TextEditingController();
@@ -49,7 +50,10 @@ class _RegisterScreenState extends State<SignUpAsNurse> {
   }
 
   Widget build(BuildContext context) {
-    return Scaffold(
+    final isDark=Theme.of(context).brightness==Brightness.dark;
+    dynamic fontcolor=isDark?grayColor:mainColor;
+
+  return Scaffold(
       appBar: PreferredSize(
           child: AppBar(
             backgroundColor: mainColor,
@@ -100,7 +104,7 @@ class _RegisterScreenState extends State<SignUpAsNurse> {
                   ),
                   Center(
                       child: Text(
-                    "Sign Up",
+                    "Sign Up".tr,
                     style: TextStyle(
                         fontSize: 30,
                         fontWeight: FontWeight.bold,
@@ -111,7 +115,7 @@ class _RegisterScreenState extends State<SignUpAsNurse> {
                   ),
                   Center(
                       child: Text(
-                    "Nursing , Care , Help",
+                    "Nursing , Care , Help".tr,
                     style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.w400,
@@ -125,7 +129,7 @@ class _RegisterScreenState extends State<SignUpAsNurse> {
               TextFormFieldScreen(
                 controller: usernameController,
                 keyboardType: TextInputType.name,
-                label: "Enter Your name",
+                label: "Enter Your name".tr,
                 prefix: Icons.email,
                 validator: (value) {
                   return ValidatorScreen(value!, 2, 90, "usernameController");
@@ -135,7 +139,7 @@ class _RegisterScreenState extends State<SignUpAsNurse> {
               TextFormFieldScreen(
                 controller: emailController,
                 keyboardType: TextInputType.emailAddress,
-                label: "Enter Your Email",
+                label: "Enter Your Email".tr,
                 prefix: Icons.email,
                 validator: (value) {
                   return ValidatorScreen(value!, 5, 90, "email");
@@ -149,7 +153,7 @@ class _RegisterScreenState extends State<SignUpAsNurse> {
                     obsureText: controller.isshowPassword,
                     controller: passwordController1,
                     keyboardType: TextInputType.name,
-                    label: "Enter New Password",
+                    label: "Enter New Password".tr,
                     prefix: Icons.lock,
                     validator: (value) {
                       return ValidatorScreen(
@@ -170,7 +174,7 @@ class _RegisterScreenState extends State<SignUpAsNurse> {
                     obsureText: controller.isshowPassword,
                     controller: passwordController2,
                     keyboardType: TextInputType.name,
-                    label: "Re Enter New Password",
+                    label: "Re Enter New Password".tr,
                     prefix: Icons.lock,
                     validator: (value) {
                       if (value != passwordController1.text) {
@@ -190,7 +194,7 @@ class _RegisterScreenState extends State<SignUpAsNurse> {
                 height: 30.0,
               ),
               MaterialButtonScreen(
-                titleOfButton: "Sign Up",
+                titleOfButton: "Sign Up".tr,
                 widthOfButton: double.infinity,
                 fontSize: 24,
                 fontWeight: FontWeight.normal,
@@ -200,19 +204,17 @@ class _RegisterScreenState extends State<SignUpAsNurse> {
                     FormKeySignUp.currentState!.save();
                     _register();
                     //    Get.to(doctorDetailsOfProfile());
-                  }
-                },
-              ),
+                  }},),
               SizedBox(
                 height: 10,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("Do you have any accout?"),
+                  Text("Do you have any accout?".tr,style: TextStyle(color: fontcolor)),
                   TextButton(
                     child: Text(
-                      "Sign in",
+                      "Sign in".tr,
                       style: TextStyle(
                         color: mainColor,
                         fontWeight: FontWeight.bold,

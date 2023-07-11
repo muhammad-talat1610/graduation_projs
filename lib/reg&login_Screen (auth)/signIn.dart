@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:graduation_project/reg&login_Screen%20(auth)/resetPassword.dart';
 import 'package:graduation_project/reg&login_Screen%20(auth)/signUp.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/cupertino.dart';
@@ -20,6 +21,8 @@ class _SignInState extends State<SignInAsNurse> {
 
   Widget build(BuildContext context) {
     final FormKey = GlobalKey<FormState>();
+    final isDark=Theme.of(context).brightness==Brightness.dark;
+    dynamic fontcolor=isDark?grayColor:mainColor;
     final TextEditingController emailController = TextEditingController();
     final TextEditingController passwordController = TextEditingController();
     bool _isLoading = false;
@@ -85,27 +88,28 @@ class _SignInState extends State<SignInAsNurse> {
         child: Form(
           key: FormKey,
           child: ListView(children: [
-              Column(
+            Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                 Center(child: Text("Care For You." , style: TextStyle(fontSize: 30 , fontWeight: FontWeight.bold ),)),
-                    SizedBox(height: 15,),
-                    Center(child: Text("Sign In" ,  style: TextStyle(fontSize: 28 , fontWeight: FontWeight.bold ,),)),
-                    SizedBox(height: 15,),
-                    Center(child: Text("Nursing , Care , Help" , style: TextStyle(fontSize: 18 , fontWeight: FontWeight.w400 , ),)),
-                   SizedBox(height: 30,),
-                    // Row( mainAxisAlignment: MainAxisAlignment.center,
-                    //   children: [
-                    //     Text("Sign as a" , style: TextStyle(fontSize: 33 , fontWeight: FontWeight.bold , ),),
-                    //     Text(" Nusre" ,  style: TextStyle(fontSize: 33 , fontWeight: FontWeight.bold , color: mainColor),),
-                    //   ],
-                    // ),
-                  ],
-                ),
+                Center(child: Text("Care For You" , style: TextStyle(fontSize: 30 , fontWeight: FontWeight.bold,color: fontcolor ),)),
+                SizedBox(height: 15,),
+                Center(child: Text("Sign in".tr ,  style: TextStyle(fontSize: 28 , fontWeight: FontWeight.bold ,color: fontcolor),)),
+                SizedBox(height: 15,),
+                Center(child: Text("Nursing , Care , Help".tr , style: TextStyle(fontSize: 18 , fontWeight: FontWeight.w400 ,color: fontcolor ),)),
+                SizedBox(height: 30,),
+                // Row( mainAxisAlignment: MainAxisAlignment.center,
+                //   children: [
+                //     Text("Sign as a" , style: TextStyle(fontSize: 33 , fontWeight: FontWeight.bold , ),),
+                //     Text(" Nusre" ,  style: TextStyle(fontSize: 33 , fontWeight: FontWeight.bold , color: mainColor),),
+                //   ],
+                // ),
+              ],
+            ),
 
             SizedBox(height: 30.0,),
-            TextFormFieldScreen(controller: emailController, keyboardType: TextInputType.emailAddress, label:"Enter Your Email ",
+            TextFormFieldScreen(controller: emailController,
+              keyboardType: TextInputType.emailAddress, label:"Enter Your Email ".tr,
               prefix: Icons.email, validator: (value) { return
                 ValidatorScreen(value!, 5, 90, "emailController");
               },),
@@ -115,7 +119,7 @@ class _SignInState extends State<SignInAsNurse> {
                   obsureText: controller.isshowPassword,
                   controller: passwordController,
                   keyboardType: TextInputType.name,
-                  label: "Enter Your Password",
+                  label: "Enter Your Password".tr,
                   prefix: Icons.lock,
                   validator: (value) {
                     return ValidatorScreen(value!, 6, 90, "password");
@@ -128,40 +132,39 @@ class _SignInState extends State<SignInAsNurse> {
             Row(mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 TextButton(child: Text(
-                  'Forget Password?' ,
+                  'Forget Password?'.tr ,
                   style: TextStyle(fontSize: 15 , color: Colors.cyan),),onPressed: () {
-                  //Get.to(forgetPassword());
-                  },),],),
-            MaterialButtonScreen(titleOfButton: "LOGIN",Icons: Icons.login_outlined , fontSize: 25 ,
+                  Get.to(resetPassword());
+                },),],),
+            MaterialButtonScreen(titleOfButton: "LOGIN".tr,Icons: Icons.login_outlined , fontSize: 25 ,
               colorOfButton: mainColor,
               onPressed: () async {
-     if (FormKey.currentState!.validate()) {
-    _login();}},),
-    //await Future.delayed(Duration(seconds: 2));
-     // final _email = emailController.text;
-     //          final _password = passwordController.text;
-     //          final success = await login(_email, _password);
-     //          if (success) {
-     //    Get.to(BNAVBAR());
-     //          }  }
-     //          else {
-     //            ScaffoldMessenger.of(context).showSnackBar(
-     //              SnackBar(content: Text('Invalid username or password')));}
-     //
-     //
-     //        }
-     //        ) ,
+                if (FormKey.currentState!.validate()) {
+                  _login();}},),
+            //await Future.delayed(Duration(seconds: 2));
+            // final _email = emailController.text;
+            //          final _password = passwordController.text;
+            //          final success = await login(_email, _password);
+            //          if (success) {
+            //    Get.to(BNAVBAR());
+            //          }  }
+            //          else {
+            //            ScaffoldMessenger.of(context).showSnackBar(
+            //              SnackBar(content: Text('Invalid username or password')));}
+            //
+            //
+            //        }
+            //        ) ,
 
 
             SizedBox(height: 10,),
             Row(mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text("Do you have any accout?"),
-                TextButton(child:Text("Sign Up" , style: TextStyle(color: mainColor , fontWeight: FontWeight.bold ,
-                  fontSize: 20 ,
+                Text("Don\'t have any accout?".tr,style: TextStyle(color: fontcolor)),
+                TextButton(child:Text("Sign Up".tr , style: TextStyle(color: fontcolor , fontWeight: FontWeight.bold ,     fontSize: 20 ,
                 ),textAlign: TextAlign.end, ), onPressed: () {
                   Get.to(SignUpAsNurse());
-                  },),
+                },),
               ],)
           ]),
         ),
