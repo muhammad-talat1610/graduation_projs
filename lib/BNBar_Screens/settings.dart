@@ -53,7 +53,7 @@ class _MedicalSettingsPageState extends State<MedicalSettingsPage> {
           ListTile(
 
 
-            title: Text('Dark mode',style: TextStyle(color: fontcolor),),
+            title: Text('mode'.tr,style: TextStyle(color: fontcolor),),
             trailing:
             IconButton(icon: Icon(Icons.brightness_2_outlined),
               onPressed: () {
