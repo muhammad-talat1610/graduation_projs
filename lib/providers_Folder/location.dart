@@ -59,7 +59,6 @@ import '../BNBar_Screens/Services_App_Screen/priceOfServent.dart';
 import '../Doctor details.dart';
 import '../providers_Folder/controller.dart';
 import '../services/colors.dart';
-import 'package:graduation_project/BNBar_Screens/all about BNAVBAR screens.dart';
 
 class Location extends StatelessWidget {
 
@@ -72,13 +71,9 @@ class Location extends StatelessWidget {
       builder: (controller) {
         return Scaffold(
 
-          body:
-
-          Column(
+          body: Column(
             children: [
               SizedBox(height: 40,),
-              Padding(
-                padding: EdgeInsets.fromLTRB(8, 0,0,0),child:
               Row(
                 children: [
                   SizedBox(
@@ -94,7 +89,6 @@ class Location extends StatelessWidget {
                     controller.getFemale();
                   }),
                 ],
-              ),
               ),Padding(
                 padding: EdgeInsets.fromLTRB(8, 0,0,0),
                 child:

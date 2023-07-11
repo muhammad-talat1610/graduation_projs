@@ -9,6 +9,7 @@ class  mylocale implements Translations {
       "home": "الصفحة الرئيسية",
       "Services": "الخدمات",
       "personal Page": "الصفحة الشخصية",
+      "Select Image":"اختر الصورة",
       'mode':'الوضع',
       "About": "الخصائص",
       "Love Your Soul": "اعتني بنفسك",
@@ -93,6 +94,7 @@ class  mylocale implements Translations {
 
       "Language": "Language",
       "home": "home",
+      "Select Image":"Select Image",
       "Services": "Services",
       "personal Page": "personal Page",
       "About": "About",

@@ -75,25 +75,56 @@ class _userprofileState extends State<doctorDetailsOfProfile> {
                     ),
                   ),
                 )
-                    : Column(
-                  children: [
-                    Stack(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only( right: 60 ,left: 30 ),
-                          child: Image(image: AssetImage("assets/images/imageProfile.png")),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 200 , right: 47, left: 15 ),
-                          child: MaterialButtonScreen(titleOfButton: "Select Image".tr ,
-                            colorOfButton: Colors.blue, widthOfButton: 350,
-                            onPressed:(){_pickImage(ImageSource.gallery);},
+                    : Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 30.0 ),
+                  child:   Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(5) ,
+                   ),
+                      height: 250 ,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 15),
+                        child: Column(mainAxisAlignment: MainAxisAlignment.end, children: [
+                          Expanded(
+                            child: Image(image: AssetImage("assets/images/imageProfile.png") ,fit: BoxFit.cover,
+                                ),
                           ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
+                          Stack(
+                            children: [
+                              Container(decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(8) ,
+                              ),
+                                height: 50 ),
+                              Center( child: Padding(
+                                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                                child: MaterialButtonScreen(titleOfButton: "Select Image".tr ,
+                                              colorOfButton:mainColor, widthOfButton: 320,
+                                              onPressed:(){_pickImage(ImageSource.gallery);},),
+                              ),
+                              )],
+                          ) ,
+                          SizedBox(height: 10,)
+                        ],),
+                      )),
+                )
+,
+                // Column(
+                //   children: [
+                //     Stack(
+                //       children: [
+                //         Padding(
+                //           padding: const EdgeInsets.only( right: 60 ,left: 30 ),
+                //           child: Image(image: AssetImage("assets/images/imageProfile.png")),
+                //         ),
+                //         Padding(
+                //           padding: const EdgeInsets.only(top: 200 , right: 47, left: 15 ),
+                //           child: MaterialButtonScreen(titleOfButton: "Select Image".tr ,
+                //             colorOfButton: Colors.blue, widthOfButton: 350,
+                //             onPressed:(){_pickImage(ImageSource.gallery);},
+                //           ),
+                //         ),
+                //       ],
+                //     ),
+                //   ],
+                // ),
 
                 // isRegistered ? Container(
                 //   width: 300,
