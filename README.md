@@ -1,4 +1,4 @@
-![12](https://github.com/muhammad-talat1610/graduation_projs/assets/128619762/441e71d4-f0b5-4eea-bdb0-27cf13ff5565)# care_for_you1
+# care_for_you1
 
 A new Flutter project.
 
